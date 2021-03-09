@@ -1,0 +1,29 @@
+{
+  "name": "cw1",
+  "version": "1.0.0",
+  "description": "coursework1",
+  "main": "index..js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hristo4all/cw1.git"
+  },
+  "keywords": [
+    "node.js",
+    "express"
+  ],
+  "author": "Hristo Ivanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hristo4all/cw1/issues"
+  },
+  "homepage": "https://github.com/hristo4all/cw1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mustache-express": "^1.3.0",
+    "nodemon": "^2.0.7",
+    "path": "^0.12.7"
+  }
+}
