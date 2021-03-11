@@ -18,15 +18,16 @@ exports.goals_list = function (req, res) {
     });
 };
 
-/*exports.goals_list = function (req, res) {
-  res.render("planner", {
-    title: "Planner",
-  });
-};*/
-
 exports.modifyGoal_page = function (req, res) {
   res.send("<h1>Modify Goal.</h1>");
 };
-exports.addGoal_page = function (req, res) {
-  res.send("<h1>Add Goal to Planner.</h1>");
+exports.add_goal = function (req, res) {
+  res.render("newGoal", {
+    title: "Add Goal",
+  });
+};
+exports.enter_actualAchievement = function (req, res) {
+  res.render("actualAchievement", {
+    title: "Enter Actual Achievement",
+  });
 };

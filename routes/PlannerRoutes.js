@@ -10,9 +10,9 @@ router.get("/modify", function (req, res) {
   res.send("<h1><h1>Modify Goal</h1></h1>");
 });
 
-router.get("/addGoal", function (req, res) {
-  res.send("<h1>Add Goal to Planner</h1>");
-});
+router.get("/add", controller.add_goal);
+
+router.get("/actual", controller.enter_actualAchievement);
 
 router.use(function (req, res) {
   res.status(404);

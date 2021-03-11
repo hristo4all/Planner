@@ -1,0 +1,31 @@
+<html>
+  <head>
+    {{
+    >header
+    }}
+  </head>
+  <body class="container">
+    <h2>{{ title }}</h2>
+    <form method="post" role="form">
+      <div class="form-group">
+        <label for="author">Exrcise</label>
+        <input
+          type="text"
+          class="form-control"
+          id="exercise"
+          name="exercise"
+          placeholder="Enter exercise"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <input
+          type="submit"
+          value="Post entry"
+          disabled
+          class="btn btn-primary"
+        />
+      </div>
+    </form>
+  </body>
+</html>
