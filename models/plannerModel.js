@@ -25,8 +25,8 @@ class Planner {
         },
         {
           day: "Wednessday",
-          exercise: "4 x bicep curl",
-          actualAchievement: "3x",
+          exercise: "",
+          actualAchievement: "",
         },
         {
           day: "Thursday",
@@ -35,8 +35,8 @@ class Planner {
         },
         {
           day: "Friday",
-          exercise: "4 x Leg Press",
-          actualAchievement: "2x",
+          exercise: "",
+          actualAchievement: "",
         },
         {
           day: "Saturday",
@@ -45,8 +45,8 @@ class Planner {
         },
         {
           day: "Sunday",
-          exercise: "4 x Bench Press",
-          actualAchievement: "done",
+          exercise: "",
+          actualAchievement: "",
         },
       ],
     });

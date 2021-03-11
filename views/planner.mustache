@@ -48,8 +48,24 @@
         <div>{{ day }}</div>
         <hr />
         <p><b>Goal: </b>{{ exercise }}</p>
+        <div class="form-group">
+          <input
+            type="submit"
+            value="Set Goal"
+            disabled
+            class="btn btn-primary"
+          />
+        </div>
         <hr />
         <a>Result: {{ actualAchievement }}</a>
+        <div class="form-group">
+          <input
+            type="submit"
+            value="Set Result"
+            disabled
+            class="btn btn-primary"
+          />
+        </div>
       </div>
       {{/weeks.0.days}}
     </div>
