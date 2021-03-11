@@ -101,7 +101,7 @@ class Planner {
     return new Promise((resolve, reject) => {
       //use the find() function of the database to get the data,
       //error first callback function, err for error, entries for data
-      this.db.find({}, function (err, entries) {
+      this.db.find({ weekNo: 1 }, function (err, entries) {
         //if error occurs reject Promise
         if (err) {
           reject(err);

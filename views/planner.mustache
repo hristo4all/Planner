@@ -40,7 +40,7 @@
     <h1>{{ title }}</h1>
 
     <br />
-    {{#each weeks}}
+    {{#weeks}}
     <div class="grid-container">
       <div class="grid-item1">Week {{ weeks.0.weekNo }}</div>
       {{#weeks.0.days}}
@@ -53,6 +53,6 @@
       </div>
       {{/weeks.0.days}}
     </div>
-    {{/each}}
+    {{/weeks}}
   </body>
 </html>
