@@ -12,6 +12,7 @@ exports.goals_list = function (req, res) {
         weeks: list,
       });
       console.log("promise resolved");
+      console.log(list);
     })
     .catch((err) => {
       console.log("promise rejected", err);
