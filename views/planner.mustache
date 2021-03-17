@@ -1,7 +1,7 @@
 <html>
   <head>
     {{
-      >header
+      >_header
     }}
     <style>
       .grid-container {
@@ -58,7 +58,7 @@
           />
         </div>
         <hr />
-        <a class="plannerBody">Achievement: {{ actualAchievement }}</a>
+        <p class="plannerBody">Achievement: {{ actualAchievement }}</p>
         <div class="form-group">
           <input
             type="submit"
@@ -72,4 +72,7 @@
     </div>
     {{/weeks}}
   </body>
+  {{
+    >_footer
+  }}
 </html>

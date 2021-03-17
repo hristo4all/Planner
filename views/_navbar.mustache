@@ -1,18 +1,26 @@
-<style>
-  #nav li a.current {
-    font-weight: 900;
-    background-color: coral;
-  }
-</style>
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-default" id="nav">
   <div class="container-fluid">
     <div class="navbar-header">
       <a class="navbar-brand" href="/">Planner</a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="/planner" {{{ PlannerNav }}}>Planner</a></li>
+      <li><a href="/planner" {{{ PlannerNav }}}>My Planner</a></li>
       <li><a href="/" {{{ Home }}}>Home</a></li>
-      <li><a href="/add" {{{ NewGoal }}}>New</a></li>
+      <li><a href="/add" {{{ NewGoal }}}>Add Goal</a></li>
     </ul>
   </div>
 </nav>
+<!--
+<div id="nav">
+  <ul>
+    <li><a href="/planner" {{{ PlannerNav }}}>My Planner</a></li>
+    <li><a href="/" {{{ Home }}}>Home</a></li>
+    <li><a href="/add" {{{ NewGoal }}}>Add Goal</a></li>
+  </ul>
+</div>-->
+<!--
+<div>
+  <p>{{ PlannerNav }}</p>
+  <p>{{ Home }}</p>
+  <p>{{ NewGoal }}</p>
+</div>-->
