@@ -30,13 +30,14 @@
       p {
         font-size: 20px;
       }
-      a {
+      .plannerBody {
         font-size: 20px;
       }
     </style>
   </head>
 
   <body>
+    {{>_navbar}}
     <h1>{{ title }}</h1>
 
     <br />
@@ -57,7 +58,7 @@
           />
         </div>
         <hr />
-        <a>Achievement: {{ actualAchievement }}</a>
+        <a class="plannerBody">Achievement: {{ actualAchievement }}</a>
         <div class="form-group">
           <input
             type="submit"

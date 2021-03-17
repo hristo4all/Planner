@@ -1,5 +1,8 @@
 exports.landing_page = function (req, res) {
-  res.send("<h1>Welcome to my Application.</h1>");
+  res.render("landingPage", {
+    title: "Welcome Page",
+    Home: 'class="current"',
+  });
 };
 const guestbookDAO = require("../models/plannerModel");
 const db = new guestbookDAO();
@@ -10,6 +13,7 @@ exports.goals_list = function (req, res) {
       res.render("planner", {
         title: "Planner",
         weeks: list,
+        PlannerNav: 'class="current"',
       });
       console.log("promise resolved");
       console.log(list);
@@ -25,6 +29,7 @@ exports.modifyGoal_page = function (req, res) {
 exports.add_goal = function (req, res) {
   res.render("newGoal", {
     title: "Add Goal",
+    NewGoal: 'class="current"',
   });
 };
 exports.enter_actualAchievement = function (req, res) {
