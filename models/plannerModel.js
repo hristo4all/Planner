@@ -58,7 +58,7 @@ class Planner {
       days: [
         {
           day: "Monday",
-          exercise: "Fuck you",
+          exercise: "Chest Press",
           actualAchievement: "done",
         },
         {
