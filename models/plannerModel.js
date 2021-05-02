@@ -9,99 +9,102 @@ class Planner {
       this.db = new nedb();
     }
   }
-  init() {
-    this.db.insert({
-      weekNo: 1,
-      days: [
-        {
-          day: "Monday",
-          exercise: "20 x Squats",
-          actualAchievement: "done",
-        },
-        {
-          day: "Tuesday",
-          exercise: "4 x Dumbell Press",
-          actualAchievement: "2x",
-        },
-        {
-          day: "Wednessday",
-          exercise: "",
-          actualAchievement: "",
-        },
-        {
-          day: "Thursday",
-          exercise: "3 x Shoulder Press",
-          actualAchievement: "done",
-        },
-        {
-          day: "Friday",
-          exercise: "",
-          actualAchievement: "",
-        },
-        {
-          day: "Saturday",
-          exercise: "30 x crunches",
-          actualAchievement: "done",
-        },
-        {
-          day: "Sunday",
-          exercise: "",
-          actualAchievement: "",
-        },
-      ],
-    });
-    //for later debugging
-    console.log("Week 1 record inserted");
 
-    this.db.insert({
-      weekNo: 2,
-      days: [
-        {
-          day: "Monday",
-          exercise: "Chest Press",
-          actualAchievement: "done",
-        },
-        {
-          day: "Tuesday",
-          exercise: "4 x Dumbell Press",
-          actualAchievement: "2x",
-        },
-        {
-          day: "Wednessday",
-          exercise: "4 x bicep curl",
-          actualAchievement: "3x",
-        },
-        {
-          day: "Thursday",
-          exercise: "3 x Shoulder Press",
-          actualAchievement: "done",
-        },
-        {
-          day: "Friday",
-          exercise: "4 x Leg Press",
-          actualAchievement: "2x",
-        },
-        {
-          day: "Saturday",
-          exercise: "30 x crunches",
-          actualAchievement: "done",
-        },
-        {
-          day: "Sunday",
-          exercise: "4 x Bench Press",
-          actualAchievement: "done",
-        },
-      ],
-    });
+  init() {
+    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+    //-----------------------------------------------------------------------
+    // get this week's monday date
+    function getMonday(d) {
+      d = new Date(d);
+      var day = d.getDay(),
+        diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
+      return new Date(d.setDate(diff));
+    }
+    //-----------------------------------------------------------------------
+    //format a date for displaying
+    function formatDate(date) {
+      return (
+        date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+      );
+    }
+    //-----------------------------------------------------------------------
+    // add a day to a date
+    function addDay(date, days) {
+      var result = new Date(date);
+      result.setDate(result.getDate() + days);
+      return result;
+    }
+    //-----------------------------------------------------------------------
+    var monday = getMonday(new Date());
+    console.log(monday);
+    //----------------------------------------------------------------------
+    var exercises = [
+      {
+        day: "Monday",
+        exercise: "20 x Squats",
+        actualAchievement: "done",
+        user: "",
+        exdate: formatDate(monday),
+      },
+      {
+        day: "Tuesday",
+        exercise: "4 x Dumbell Press",
+        actualAchievement: "2x",
+        user: "",
+        exdate: formatDate(addDay(monday, 1)),
+      },
+      {
+        day: "Wednessday",
+        exercise: "",
+        actualAchievement: "",
+        user: "",
+        exdate: formatDate(addDay(monday, 2)),
+      },
+      {
+        day: "Thursday",
+        exercise: "3 x Shoulder Press",
+        actualAchievement: "done",
+        user: "",
+        exdate: formatDate(addDay(monday, 3)),
+      },
+      {
+        day: "Friday",
+        exercise: "",
+        actualAchievement: "",
+        user: "",
+        exdate: formatDate(addDay(monday, 4)),
+      },
+      {
+        day: "Saturday",
+        exercise: "30 x crunches",
+        actualAchievement: "done",
+        user: "",
+        exdate: formatDate(addDay(monday, 5)),
+      },
+      {
+        day: "Sunday",
+        exercise: "",
+        actualAchievement: "",
+        user: "",
+        exdate: formatDate(addDay(monday, 6)),
+      },
+    ];
+
+    this.db.insert(exercises);
+
     //for later debugging
-    console.log("Week 2 record inserted");
+    console.log("Exercises record inserted");
   }
+  resetDB() {
+    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+  }
+
   getAllEntries() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
       //use the find() function of the database to get the data,
       //error first callback function, err for error, entries for data
-      this.db.find({ weekNo: 1 }, function (err, entries) {
+      this.db.find({}, function (err, entries) {
         //if error occurs reject Promise
         if (err) {
           reject(err);

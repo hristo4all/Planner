@@ -4,15 +4,27 @@ exports.landing_page = function (req, res) {
     Home: 'class="current"',
   });
 };
+//rename
 const guestbookDAO = require("../models/plannerModel");
 const db = new guestbookDAO();
+db.resetDB();
 db.init();
 exports.goals_list = function (req, res) {
+  //-----------------------------------------------------------------------
+  // find today's date
+  var date = new Date();
+  var today =
+    date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  //-----------------------------------------------------------------------
+  //get monday
+
+  //-----------------------------------------------------------------------
   db.getAllEntries()
     .then((list) => {
       res.render("planner", {
         title: "Planner",
-        weeks: list,
+        today: today,
+        exercises: list,
         PlannerNav: 'class="current"',
       });
       console.log("promise resolved");

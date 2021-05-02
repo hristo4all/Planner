@@ -38,15 +38,16 @@
 
   <body>
     {{>_navbar}}
-    <h1>{{ title }}</h1>
-
+    <h1>
+      {{ title }} for {{ exercises.0.exdate }} till {{ exercises.6.exdate }}
+    </h1>
+    <h2>Today is {{ today }}</h2>
     <br />
-    {{#weeks}}
+
     <div class="grid-container">
-      <div class="grid-item1">Week {{ weeks.0.weekNo }}</div>
-      {{#weeks.0.days}}
+      {{#exercises}}
       <div class="grid-item">
-        <div>{{ day }}</div>
+        <div>{{ day }} {{ exdate }}</div>
         <hr />
         <p><b>Goal: </b>{{ exercise }}</p>
         <div class="form-group">
@@ -68,9 +69,8 @@
           />
         </div>
       </div>
-      {{/weeks.0.days}}
+      {{/exercises}}
     </div>
-    {{/weeks}}
   </body>
   {{
     >_footer
