@@ -28,7 +28,7 @@ exports.goals_list = function (req, res) {
         PlannerNav: 'class="current"',
       });
       console.log("promise resolved");
-      console.log(list);
+      //console.log(list);
     })
     .catch((err) => {
       console.log("promise rejected", err);

@@ -89,7 +89,9 @@ class Planner {
         exdate: formatDate(addDay(monday, 6)),
       },
     ];
-
+    console.log("Inserted into db: ");
+    console.log(exercises);
+    //----------------------------------------------------------------------
     this.db.insert(exercises);
 
     //for later debugging
@@ -104,12 +106,15 @@ class Planner {
     return new Promise((resolve, reject) => {
       //use the find() function of the database to get the data,
       //error first callback function, err for error, entries for data
-      this.db.find({}, function (err, entries) {
+      this.db.find({ user: "" }, function (err, entries) {
         //if error occurs reject Promise
         if (err) {
           reject(err);
           //if no error resolve the promise & return the data
         } else {
+          entries.sort((a, b) => {
+            return a.exdate > b.exdate ? 1 : a.exdate < b.exdate ? -1 : 0;
+          });
           resolve(entries);
           //to see what the returned data looks like
           console.log("function all() returns: ", entries);
