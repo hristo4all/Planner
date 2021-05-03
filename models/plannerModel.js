@@ -11,7 +11,7 @@ class Planner {
   }
 
   init() {
-    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+    //this.db.remove({}, { multi: true }, function (err, numRemoved) {});
     //-----------------------------------------------------------------------
     // get this week's monday date
     function getMonday(d) {

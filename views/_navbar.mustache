@@ -8,6 +8,15 @@
       <li><a href="/" {{{ Home }}}>Home</a></li>
       <li><a href="/add" {{{ NewGoal }}}>Add Goal</a></li>
     </ul>
+    <div class="text-right" style="margin-bottom: 1em">
+      {{^user}}
+      <a id="register" href="register" class="btn btn-primary"> Register </a>
+      <a id="login" href="login" class="btn btn-primary"> Sign in </a>
+      {{/user}}
+      {{#user}}
+      <a id="logout" href="logout" class="btn btn-primary"> Sign out </a>
+      {{/user}}
+    </div>
   </div>
 </nav>
 <!--
