@@ -1,7 +1,7 @@
-const guestbookDAO = require("../models/plannerModel");
+//const guestbookDAO = require("../models/plannerModel");
 const userDao = require("../models/userModel");
-const db = new guestbookDAO();
-db.init();
+const db = require("../models/plannerModel");
+//db.init();
 //-----------------------------------------------------------------------------------------
 exports.landing_page = function (req, res) {
   res.render("landingPage", {
@@ -23,7 +23,7 @@ exports.goals_list = function (req, res) {
     date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
   //-----------------------------------------------------------------------
 
-  db.getAllEntries()
+  db.getAllEntries(req.user)
     .then((list) => {
       res.render("planner", {
         title: "Planner",
@@ -83,7 +83,7 @@ exports.post_login = function (req, res) {
 //-----------------------------------------------------------------------------------------
 exports.show_user_entries = function (req, res) {
   let user = req.params.author;
-  db.getAllEntries(user)
+  db.getEntriesByUser(user)
     .then((list) => {
       res.render("planner", {
         title: "Planner",
@@ -91,10 +91,9 @@ exports.show_user_entries = function (req, res) {
         exercises: list,
         user: req.user,
         PlannerNav: 'class="current"',
-        user: req.user,
       });
       console.log("promise resolved");
-      //console.log(list);
+      console.log(list);
     })
     .catch((err) => {
       console.log("Error: ");

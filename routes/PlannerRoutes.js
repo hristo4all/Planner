@@ -2,7 +2,7 @@ const express = require("express");
 const controller = require("../controllers/PlannerController.js");
 const router = express.Router();
 const auth = require("../auth/auth.js");
-const { ensureLoggedIn } = require("connect-ensure-login");
+const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 const user = require("../models/userModel.js");
 
 router.get("/", controller.landing_page);
