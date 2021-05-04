@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require("../auth/auth.js");
 const ensureLoggedIn = require("connect-ensure-login").ensureLoggedIn;
 const user = require("../models/userModel.js");
+const planner = require("../models/plannerModel.js");
 
 router.get("/", controller.landing_page);
 
@@ -13,9 +14,10 @@ router.get("/modify", function (req, res) {
   res.send("<h1><h1>Modify Goal</h1></h1>");
 });
 //---------------------------------------------------------------------------
-router.get("/add", controller.add_goal);
+//router.get("/add", controller.add_goal);
+//router.get("/new", ensureLoggedIn("/login"), controller.add_goal);
 router.get("/new", ensureLoggedIn("/login"), controller.add_goal);
-
+router.post("/new", ensureLoggedIn("/login"), controller.post_add_goal);
 //---------------------------------------------------------------------------
 //user registration routes
 router.get("/register", controller.show_register_page);

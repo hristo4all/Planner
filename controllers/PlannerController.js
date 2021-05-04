@@ -23,7 +23,7 @@ exports.goals_list = function (req, res) {
     date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
   //-----------------------------------------------------------------------
 
-  db.getAllEntries(req.user)
+  db.getAllEntries()
     .then((list) => {
       res.render("planner", {
         title: "Planner",
@@ -114,7 +114,25 @@ exports.add_goal = function (req, res) {
   res.render("newGoal", {
     title: "Add Goal",
     NewGoal: 'class="current"',
+    user: req.user.user,
   });
+};
+exports.post_add_goal = function (req, res) {
+  console.log("this is POST");
+  //var value = document.getElementById("days").innerHTML;
+  //console.log(value);
+  //var entry = getEntriesByDay(value);
+  //console.log("entry is:");
+  //console.log(entry);
+  db.createGoal(
+    document.getElementById("days").value,
+    req.body.exercise,
+    " ",
+    req.user.user,
+    entry.exdate
+  );
+  console.log("this is POST 2");
+  res.redirect("/");
 };
 
 //-----------------------------------------------------------------------------------------
@@ -124,9 +142,3 @@ exports.enter_actualAchievement = function (req, res) {
   });
 };
 //-----------------------------------------------------------------------------------------
-exports.show_new_entries = function (req, res) {
-  res.render("newEntry", {
-    title: "Guest Book",
-    user: req.user,
-  });
-};

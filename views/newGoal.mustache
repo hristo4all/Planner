@@ -8,6 +8,7 @@
     {{>_navbar}}
     <div class="container">
       <h2>{{ title }}</h2>
+      <h2>Setting achievement for {{ day }}</h2>
       <form method="post" role="form">
         <div class="form-group">
           <label for="exercise">Exrcise</label>
@@ -20,10 +21,22 @@
             required
           />
         </div>
+        <div class="form-group">
+          <label for="exercise">User</label>
+          <input
+            type="text"
+            class="form-control"
+            id="user"
+            name="user"
+            value="{{ user }}"
+            disabled
+            required
+          />
+        </div>
         <!--Needs validation to chekc if there is no existing exercise for that day-->
         <div class="form-group">
           <label for="day">Day Of Week</label>
-          <select name="cars" id="cars" required>
+          <select name="days" id="days" required>
             <option value="Monday">Monday</option>
             <option value="Tuesday">Tuesday</option>
             <option value="Wednesday">Wednesday</option>
@@ -34,12 +47,7 @@
           </select>
         </div>
         <div class="form-group">
-          <input
-            type="submit"
-            value="Add Exercise"
-            disabled
-            class="btn btn-primary"
-          />
+          <input type="submit" value="Add Exercise" class="btn btn-primary" />
         </div>
       </form>
     </div>

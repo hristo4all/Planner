@@ -47,49 +47,49 @@ class Planner {
         day: "Monday",
         exercise: "20 x Squats",
         actualAchievement: "done",
-        user: "123",
+        user: "",
         exdate: formatDate(monday),
       },
       {
         day: "Tuesday",
         exercise: "4 x Dumbell Press",
         actualAchievement: "2x",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 1)),
       },
       {
         day: "Wednessday",
         exercise: "",
         actualAchievement: "",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 2)),
       },
       {
         day: "Thursday",
         exercise: "3 x Shoulder Press",
         actualAchievement: "done",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 3)),
       },
       {
         day: "Friday",
         exercise: "",
         actualAchievement: "",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 4)),
       },
       {
         day: "Saturday",
         exercise: "30 x crunches",
         actualAchievement: "done",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 5)),
       },
       {
         day: "Sunday",
         exercise: "",
         actualAchievement: "",
-        user: "123",
+        user: "",
         exdate: formatDate(addDay(monday, 6)),
       },
     ];
@@ -105,14 +105,12 @@ class Planner {
     this.db.remove({}, { multi: true }, function (err, numRemoved) {});
   }
 
-  getAllEntries(name) {
-    console.log("the name is:");
-    console.log(name);
+  getAllEntries() {
     //return a Promise object, which can be resolved or rejected
     return new Promise((resolve, reject) => {
       //use the find() function of the database to get the data,
       //error first callback function, err for error, entries for data
-      this.db.find({ user: name.user }, function (err, entries) {
+      this.db.find({}, function (err, entries) {
         //if error occurs reject Promise
         if (err) {
           reject(err);
@@ -128,18 +126,33 @@ class Planner {
       });
     });
   }
-  /*getEntriesByUser(authorName) {
+  getEntriesByDay(dayIn) {
     return new Promise((resolve, reject) => {
-      this.db.find({ user: authorName }, function (err, entries) {
+      this.db.find({ day: dayIn }, function (err, entries) {
         if (err) {
           reject(err);
         } else {
           resolve(entries);
-          console.log("function getEntriesByUser() returns: ", entries);
         }
       });
     });
-  }*/
+  }
+  createGoal(dayIn, exerciseIn, actualAchievement, user, date) {
+    var goal = {
+      day: dayIn,
+      exercise: exercise,
+      actualAchievement: actualAchievement,
+      user: user,
+      exdate: date,
+    };
+    console.log("goal created", goal);
+    db.update(
+      { day: dayIn },
+      { $set: { exercise: exerciseIn } },
+      { multi: true },
+      function (err, numReplaced) {}
+    );
+  }
 }
 const dao = new Planner("planner.db");
 dao.init();

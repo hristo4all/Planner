@@ -47,11 +47,13 @@
     <div class="grid-container">
       {{#exercises}}
       <div class="grid-item">
-        <div>{{ day }} {{ exdate }}</div>
+        <div id="day" value="{{ day }}">{{ day }} {{ exdate }}</div>
         <hr />
         <p><b>Goal: </b>{{ exercise }}</p>
         <div class="form-group">
-          <input type="submit" value="Set Goal" class="btn btn-primary" />
+          <div class="text-right">
+            <a href="/new" class="btn btn-primary">Set Goal</a>
+          </div>
         </div>
         <hr />
         <p class="plannerBody">Achievement: {{ actualAchievement }}</p>
