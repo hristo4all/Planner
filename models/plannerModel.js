@@ -127,33 +127,43 @@ class Planner {
     });
   }
   getEntriesByDay(dayIn) {
+    console.log("this is getEntriesByDay");
     return new Promise((resolve, reject) => {
-      this.db.find({ day: dayIn }, function (err, entries) {
+      this.db.find({ day: dayIn }, function (err, day) {
         if (err) {
+          console.log("error occured");
           reject(err);
         } else {
-          resolve(entries);
+          resolve(day);
         }
       });
     });
   }
-  createGoal(dayIn, exerciseIn, actualAchievement, user, date) {
+  createGoal(dayIn) {
     var goal = {
-      day: dayIn,
-      exercise: exercise,
-      actualAchievement: actualAchievement,
-      user: user,
-      exdate: date,
+      day: dayIn.day,
+      exercise: dayIn.exercise,
+      actualAchievement: dayIn.actualAchievement,
+      user: dayIn.user,
+      exdate: dayIn.exdate,
     };
-    console.log("goal created", goal);
-    db.update(
+    console.log("goal created");
+    console.log(goal);
+    /*db.update(
       { day: dayIn },
       { $set: { exercise: exerciseIn } },
       { multi: true },
-      function (err, numReplaced) {}
-    );
+      function (err, numReplaced) {
+        console.log(err);
+      }
+    );*/
+    this.db.insert(goal, function (err, doc) {
+      if (err) {
+        console.log("Error inserting document", subject);
+      }
+    });
   }
 }
 const dao = new Planner("planner.db");
-dao.init();
+//dao.init();
 module.exports = dao;

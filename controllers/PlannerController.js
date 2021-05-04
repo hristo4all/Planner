@@ -115,24 +115,30 @@ exports.add_goal = function (req, res) {
     title: "Add Goal",
     NewGoal: 'class="current"',
     user: req.user.user,
+    day: req.params.day,
   });
 };
 exports.post_add_goal = function (req, res) {
   console.log("this is POST");
-  //var value = document.getElementById("days").innerHTML;
-  //console.log(value);
-  //var entry = getEntriesByDay(value);
-  //console.log("entry is:");
-  //console.log(entry);
-  db.createGoal(
-    document.getElementById("days").value,
-    req.body.exercise,
-    " ",
-    req.user.user,
-    entry.exdate
-  );
-  console.log("this is POST 2");
-  res.redirect("/");
+  //var x = document.getElementById("days").value;
+  //console.log(req.params.day);
+
+  console.log("entry is:");
+  //console.log(day);
+  db.getEntriesByDay(req.params.day)
+    .then((day) => {
+      //day.exercise = "testing";
+      console.log("promise resolved");
+      console.log("entry is:");
+      console.log(day);
+      //implement create/edit goal
+      //db.createGoal(day);
+      res.redirect("/");
+    })
+    .catch((err) => {
+      console.log("Error: ");
+      console.log(JSON.stringify(err));
+    });
 };
 
 //-----------------------------------------------------------------------------------------
