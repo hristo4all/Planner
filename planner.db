@@ -1,7 +1,35 @@
-{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":"2021/5/9","_id":"3HCVRzYtQyr8li4B"}
-{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":"2021/5/6","_id":"IseBJhH0iqs9D2An"}
-{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":"2021/5/4","_id":"bvs4lh36e5WnRVpp"}
-{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":"2021/5/3","_id":"oZRP5oqRoprq5Zz9"}
-{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":"2021/5/5","_id":"v7vqlRQidzLjnfRq"}
-{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":"2021/5/7","_id":"xNP1jKo5UJftEtFp"}
-{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":"2021/5/8","_id":"yj6JbTB3OxUwrk38"}
+{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620211873306},"_id":"2Y5Lz5M73FVcbEOW"}
+{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620557473306},"_id":"GiqDBxPzUlLxtOl3"}
+{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620298273306},"_id":"HIbYjCKjl684Ts5U"}
+{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620903073306},"_id":"KkszKl0sEpbNU4Wg"}
+{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620125473306},"_id":"MLHbE7yjSHJc7N0P"}
+{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1621162273306},"_id":"N69qYNlMib4lxjIz"}
+{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620384673306},"_id":"UdkwI72oDTsYzZyY"}
+{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620039073306},"_id":"Wpol4WfDrcsMSc4K"}
+{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620643873306},"_id":"aARwZUeoZWEgOT6s"}
+{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620816673306},"_id":"fxDMMFUMNljAcgb3"}
+{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620730273306},"_id":"mZTmhnRSSUDoObAA"}
+{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1621075873306},"_id":"qP6hk5JViwsqxtEA"}
+{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1620471073306},"_id":"re5rC4PHs14l30Xc"}
+{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620989473306},"_id":"vy9m8YtfNz1csgNy"}
+{"$$deleted":true,"_id":"2Y5Lz5M73FVcbEOW"}
+{"$$deleted":true,"_id":"GiqDBxPzUlLxtOl3"}
+{"$$deleted":true,"_id":"HIbYjCKjl684Ts5U"}
+{"$$deleted":true,"_id":"KkszKl0sEpbNU4Wg"}
+{"$$deleted":true,"_id":"MLHbE7yjSHJc7N0P"}
+{"$$deleted":true,"_id":"N69qYNlMib4lxjIz"}
+{"$$deleted":true,"_id":"UdkwI72oDTsYzZyY"}
+{"$$deleted":true,"_id":"Wpol4WfDrcsMSc4K"}
+{"$$deleted":true,"_id":"aARwZUeoZWEgOT6s"}
+{"$$deleted":true,"_id":"fxDMMFUMNljAcgb3"}
+{"$$deleted":true,"_id":"mZTmhnRSSUDoObAA"}
+{"$$deleted":true,"_id":"qP6hk5JViwsqxtEA"}
+{"$$deleted":true,"_id":"re5rC4PHs14l30Xc"}
+{"$$deleted":true,"_id":"vy9m8YtfNz1csgNy"}
+{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620039578756},"_id":"uEiKDRBQEXbOGZhD"}
+{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620125978756},"_id":"83tOgRxRJhUGiJFf"}
+{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620212378756},"_id":"XiClwQSwjPpeSr9q"}
+{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620298778756},"_id":"lPjjfTe4sGCkN08D"}
+{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620385178756},"_id":"JxK7vimauPNBNY4M"}
+{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1620471578756},"_id":"bCWtIEjIB1DZtTnp"}
+{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620557978756},"_id":"oFsmyimHObrVCRiZ"}

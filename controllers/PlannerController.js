@@ -1,7 +1,7 @@
 //const guestbookDAO = require("../models/plannerModel");
 const userDao = require("../models/userModel");
 const db = require("../models/plannerModel");
-//db.init();
+db.init();
 //-----------------------------------------------------------------------------------------
 exports.landing_page = function (req, res) {
   res.render("landingPage", {
@@ -38,6 +38,12 @@ exports.goals_list = function (req, res) {
     .catch((err) => {
       console.log("promise rejected", err);
     });
+
+  //-----------------------------------------------------------------------
+  var firstDay = new Date();
+  var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
+  console.log("next week is ");
+  console.log(nextWeek);
   //-----------------------------------------------------------------------
 };
 //-----------------------------------------------------------------------------------------
