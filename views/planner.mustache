@@ -6,7 +6,7 @@
     <style>
       .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto auto auto auto auto auto;
+        grid-template-columns: auto auto auto auto auto auto auto;
         grid-gap: 10px;
         background-color: #2196f3;
         padding: 10px;
@@ -39,7 +39,7 @@
   <body>
     {{>_navbar}}
     <h1>
-      {{ title }} for {{ exercises.0.exdate }} till {{ exercises.6.exdate }}
+      {{ title }} for 
     </h1>
     <h2>Today is {{ today }}</h2>
     <br />
@@ -47,23 +47,25 @@
     <div class="grid-container">
       {{#exercises}}
       <div class="grid-item">
-        <div id="day" value="{{ day }}">{{ day }} {{ exdate }}</div>
+        <div id="day" value="{{ name }}">{{ date }} {{ name }}</div>
         <hr />
-        <p><b>Goal: </b>{{ exercise }}</p>
+        <p><b>Goal: </b>{{ goal }}</p>
         <div class="form-group">
-          <div class="text-right">
-            <a href="/new/{{ day }}" class="btn btn-primary">Set Goal</a>
+          <div>
+            <a href="/new/{{ name }}" class="btn btn-primary">Set Goal</a>
           </div>
         </div>
         <hr />
-        <p class="plannerBody">Achievement: {{ actualAchievement }}</p>
+        <p class="plannerBody">Achievement: {{achievement}} </p>
         <div class="form-group">
           <input type="submit" value="Set Result" class="btn btn-primary" />
         </div>
       </div>
       {{/exercises}}
     </div>
+    <hr/>
   </body>
+  
   {{
     >_footer
   }}

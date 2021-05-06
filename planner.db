@@ -1,35 +1,93 @@
-{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620211873306},"_id":"2Y5Lz5M73FVcbEOW"}
-{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620557473306},"_id":"GiqDBxPzUlLxtOl3"}
-{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620298273306},"_id":"HIbYjCKjl684Ts5U"}
-{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620903073306},"_id":"KkszKl0sEpbNU4Wg"}
-{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620125473306},"_id":"MLHbE7yjSHJc7N0P"}
-{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1621162273306},"_id":"N69qYNlMib4lxjIz"}
-{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620384673306},"_id":"UdkwI72oDTsYzZyY"}
-{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620039073306},"_id":"Wpol4WfDrcsMSc4K"}
-{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620643873306},"_id":"aARwZUeoZWEgOT6s"}
-{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620816673306},"_id":"fxDMMFUMNljAcgb3"}
-{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620730273306},"_id":"mZTmhnRSSUDoObAA"}
-{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1621075873306},"_id":"qP6hk5JViwsqxtEA"}
-{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1620471073306},"_id":"re5rC4PHs14l30Xc"}
-{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620989473306},"_id":"vy9m8YtfNz1csgNy"}
-{"$$deleted":true,"_id":"2Y5Lz5M73FVcbEOW"}
-{"$$deleted":true,"_id":"GiqDBxPzUlLxtOl3"}
-{"$$deleted":true,"_id":"HIbYjCKjl684Ts5U"}
-{"$$deleted":true,"_id":"KkszKl0sEpbNU4Wg"}
-{"$$deleted":true,"_id":"MLHbE7yjSHJc7N0P"}
-{"$$deleted":true,"_id":"N69qYNlMib4lxjIz"}
-{"$$deleted":true,"_id":"UdkwI72oDTsYzZyY"}
-{"$$deleted":true,"_id":"Wpol4WfDrcsMSc4K"}
-{"$$deleted":true,"_id":"aARwZUeoZWEgOT6s"}
-{"$$deleted":true,"_id":"fxDMMFUMNljAcgb3"}
-{"$$deleted":true,"_id":"mZTmhnRSSUDoObAA"}
-{"$$deleted":true,"_id":"qP6hk5JViwsqxtEA"}
-{"$$deleted":true,"_id":"re5rC4PHs14l30Xc"}
-{"$$deleted":true,"_id":"vy9m8YtfNz1csgNy"}
-{"day":"Monday","exercise":"20 x Squats","actualAchievement":"done","user":"","exdate":{"$$date":1620039578756},"_id":"uEiKDRBQEXbOGZhD"}
-{"day":"Tuesday","exercise":"4 x Dumbell Press","actualAchievement":"2x","user":"","exdate":{"$$date":1620125978756},"_id":"83tOgRxRJhUGiJFf"}
-{"day":"Wednessday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620212378756},"_id":"XiClwQSwjPpeSr9q"}
-{"day":"Thursday","exercise":"3 x Shoulder Press","actualAchievement":"done","user":"","exdate":{"$$date":1620298778756},"_id":"lPjjfTe4sGCkN08D"}
-{"day":"Friday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620385178756},"_id":"JxK7vimauPNBNY4M"}
-{"day":"Saturday","exercise":"30 x crunches","actualAchievement":"done","user":"","exdate":{"$$date":1620471578756},"_id":"bCWtIEjIB1DZtTnp"}
-{"day":"Sunday","exercise":"","actualAchievement":"","user":"","exdate":{"$$date":1620557978756},"_id":"oFsmyimHObrVCRiZ"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620334800000},"_id":"0E3cffauBTlOgVqC"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622408400000},"_id":"1AkPJkxmAOCk4OlO"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620075600000},"_id":"5uJ85Wni4ZiYNsAG"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620939600000},"_id":"DIYUgI5Yj9Wl4Uts"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621285200000},"_id":"EcYeZiYpOjGvut9E"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621717200000},"_id":"FuLQGxRQhK2CkSLy"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621458000000},"_id":"Hg8IHZZiKVwi6oM2"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620594000000},"_id":"KkMedrvGrZFNHNgR"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621544400000},"_id":"M22SF7DBWGol4X5Z"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620680400000},"_id":"RGISBSAXdyr7DW41"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621890000000},"_id":"Ss5rXo0rGHTw8qaG"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621630800000},"_id":"UqZW04hBbIy0xVTx"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622322000000},"_id":"V9EOMR4GkzW1JZFa"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620421200000},"_id":"VRGImOpEUaZHbs2U"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622235600000},"_id":"XDzuXUDaMJgvp9gE"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621198800000},"_id":"ZrtklTOVKDqy86nw"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621976400000},"_id":"a4CvlhZ7a7iZIabS"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622062800000},"_id":"a9ar2ytoCVDLUEWu"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619902800000},"_id":"e9g9jromKQKeqq9u"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621803600000},"_id":"eNmWytggGHogDNt3"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620507600000},"_id":"ek3kaJM0AQXxDYwT"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622149200000},"_id":"gs0TcP6CeteUh3Q7"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621371600000},"_id":"nSrslZTlAsBDZZ7l"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621026000000},"_id":"qTLLqrc2Tu9odW3G"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620248400000},"_id":"qg5SK5DRAVTeEHt0"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620766800000},"_id":"rf0ekgdFCpSkQTKY"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620853200000},"_id":"trfFsEjGoWqliRU4"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619816400000},"_id":"vPPmcDVapFm6ciNZ"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621112400000},"_id":"wk9Fe9BDl1ZmZtuE"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620162000000},"_id":"y0slTfJcGNqEd5eQ"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619989200000},"_id":"zNdLNPTRwkfYihvC"}
+{"$$deleted":true,"_id":"0E3cffauBTlOgVqC"}
+{"$$deleted":true,"_id":"1AkPJkxmAOCk4OlO"}
+{"$$deleted":true,"_id":"5uJ85Wni4ZiYNsAG"}
+{"$$deleted":true,"_id":"DIYUgI5Yj9Wl4Uts"}
+{"$$deleted":true,"_id":"EcYeZiYpOjGvut9E"}
+{"$$deleted":true,"_id":"FuLQGxRQhK2CkSLy"}
+{"$$deleted":true,"_id":"Hg8IHZZiKVwi6oM2"}
+{"$$deleted":true,"_id":"KkMedrvGrZFNHNgR"}
+{"$$deleted":true,"_id":"M22SF7DBWGol4X5Z"}
+{"$$deleted":true,"_id":"RGISBSAXdyr7DW41"}
+{"$$deleted":true,"_id":"Ss5rXo0rGHTw8qaG"}
+{"$$deleted":true,"_id":"UqZW04hBbIy0xVTx"}
+{"$$deleted":true,"_id":"V9EOMR4GkzW1JZFa"}
+{"$$deleted":true,"_id":"VRGImOpEUaZHbs2U"}
+{"$$deleted":true,"_id":"XDzuXUDaMJgvp9gE"}
+{"$$deleted":true,"_id":"ZrtklTOVKDqy86nw"}
+{"$$deleted":true,"_id":"a4CvlhZ7a7iZIabS"}
+{"$$deleted":true,"_id":"a9ar2ytoCVDLUEWu"}
+{"$$deleted":true,"_id":"e9g9jromKQKeqq9u"}
+{"$$deleted":true,"_id":"eNmWytggGHogDNt3"}
+{"$$deleted":true,"_id":"ek3kaJM0AQXxDYwT"}
+{"$$deleted":true,"_id":"gs0TcP6CeteUh3Q7"}
+{"$$deleted":true,"_id":"nSrslZTlAsBDZZ7l"}
+{"$$deleted":true,"_id":"qTLLqrc2Tu9odW3G"}
+{"$$deleted":true,"_id":"qg5SK5DRAVTeEHt0"}
+{"$$deleted":true,"_id":"rf0ekgdFCpSkQTKY"}
+{"$$deleted":true,"_id":"trfFsEjGoWqliRU4"}
+{"$$deleted":true,"_id":"vPPmcDVapFm6ciNZ"}
+{"$$deleted":true,"_id":"wk9Fe9BDl1ZmZtuE"}
+{"$$deleted":true,"_id":"y0slTfJcGNqEd5eQ"}
+{"$$deleted":true,"_id":"zNdLNPTRwkfYihvC"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619816400000},"_id":"dqNgrORzHjUerio0"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619902800000},"_id":"sodS8dmwqQDH0JTZ"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1619989200000},"_id":"ux5IKf5m6aTJ69Lb"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620075600000},"_id":"KIhFFhUxUYN7Ffwc"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620162000000},"_id":"5OGNSBqk8cIbhi0l"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620248400000},"_id":"TmsKWd4X53HCtvHp"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620334800000},"_id":"F2XQdfHofl2a2Jvw"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620421200000},"_id":"iHaQycryjaztSUTg"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620507600000},"_id":"7y91quXljyYehRJS"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620594000000},"_id":"PVw6ATMRwvlXWM5b"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620680400000},"_id":"Qox6RGRzCGFDhB3H"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620766800000},"_id":"kh0fCbyPfR3uTVoo"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620853200000},"_id":"TUxQoGQRz162evF5"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1620939600000},"_id":"8Xp9vrGNXBxUnXuA"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621026000000},"_id":"gDwIyyiVfOsPtewH"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621112400000},"_id":"8Xwa5afqymvDTNTV"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621198800000},"_id":"guhunqquvJdgPhxV"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621285200000},"_id":"DzgQ9ZO1aE6S4qiW"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621371600000},"_id":"tp6EPy2v9Xo409q8"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621458000000},"_id":"fZlOVNyDir93H8xt"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621544400000},"_id":"F977AeUZIt1pHkev"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621630800000},"_id":"R8aFlnNJVd2t6KOE"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621717200000},"_id":"etd533cUjS4b1k0M"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621803600000},"_id":"AOKblwHthP0EOtwD"}
+{"name":"Tuesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621890000000},"_id":"Kga6814qQi7DLWrC"}
+{"name":"Wednesday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1621976400000},"_id":"2dhGviffunKv2fT7"}
+{"name":"Thursday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622062800000},"_id":"a7WD8kb31y0ZfOTr"}
+{"name":"Friday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622149200000},"_id":"gwIGkLQ9Fh45HxtD"}
+{"name":"Saturday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622235600000},"_id":"xNEBmT4VGDAnc7ue"}
+{"name":"Sunday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622322000000},"_id":"SmNqpao10Dkr9zdu"}
+{"name":"Monday","goal":"20x Bench Press","achievement":"test","user":"Hristo","date":{"$$date":1622408400000},"_id":"aRlsQyCMY0pKoANT"}

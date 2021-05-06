@@ -15,8 +15,10 @@ class Planner {
   }
 
   init() {
+    //reset the database
     this.db.remove({}, { multi: true }, function (err, numRemoved) {});
     //-----------------------------------------------------------------------
+    /*
     // get this week's monday date
     function getMonday(d) {
       d = new Date(d);
@@ -24,80 +26,75 @@ class Planner {
         diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
       return new Date(d.setDate(diff));
     }
+*/
 
     // add a day to a date
+    /*
     function addDay(date, days) {
       var result = new Date(date);
       result.setDate(result.getDate() + days);
       return result;
     }
+    */
     //-----------------------------------------------------------------------
-    var monday = getMonday(new Date());
-    console.log(monday);
+    //var monday = getMonday(new Date());
+    //console.log(monday);
     //----------------------------------------------------------------------
-    var exercises = [
-      {
-        day: "Monday",
-        exercise: "20 x Squats",
-        actualAchievement: "done",
-        user: "",
-        exdate: monday,
-      },
-      {
-        day: "Tuesday",
-        exercise: "4 x Dumbell Press",
-        actualAchievement: "2x",
-        user: "",
-        exdate: addDay(monday, 1),
-      },
-      {
-        day: "Wednessday",
-        exercise: "",
-        actualAchievement: "",
-        user: "",
-        exdate: addDay(monday, 2),
-      },
-      {
-        day: "Thursday",
-        exercise: "3 x Shoulder Press",
-        actualAchievement: "done",
-        user: "",
-        exdate: addDay(monday, 3),
-      },
-      {
-        day: "Friday",
-        exercise: "",
-        actualAchievement: "",
-        user: "",
-        exdate: addDay(monday, 4),
-      },
-      {
-        day: "Saturday",
-        exercise: "30 x crunches",
-        actualAchievement: "done",
-        user: "",
-        exdate: addDay(monday, 5),
-      },
-      {
-        day: "Sunday",
-        exercise: "",
-        actualAchievement: "",
-        user: "",
-        exdate: addDay(monday, 6),
-      },
+    /* Get all days and dates within a months
+     * @param {int} The month number, 0 based
+     * @param {int} The year, not zero based, required to account for leap years
+     * @return {Date[]} List with date objects for each day of the month
+     */
+    function getDaysInMonth(month, year) {
+      var date = new Date(year, month, 1);
+      var days = [];
+      while (date.getMonth() === month) {
+        days.push(new Date(date));
+        date.setDate(date.getDate() + 1);
+      }
+      return days;
+    }
+    var date = new Date();
+    var month = date.getMonth();
+    var year = date.getFullYear();
+
+    var dates = getDaysInMonth(month, year);
+    //=================================================================
+    //array with each name of day of the week
+    var dayNames = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
     ];
+    //=================================================================
+    var objDays = []; // array to hold the day object 
+    var x; //counter
+    for (x = 0; x < dates.length; x++) {
+      var day = {
+        name: dayNames[dates[x].getDay()],
+        goal:"20x Bench Press",
+        achievement:"test",
+        user:"Hristo",
+        date: dates[x],
+      };
+      objDays.push(day);
+    }
+    //used for debugging 
+    console.log(objDays);
     console.log("Inserted into db: ");
-    console.log(exercises);
+    //console.log(exercises);
     //----------------------------------------------------------------------
-    this.db.insert(exercises);
+    //insert array objDays to the databases
+    this.db.insert(objDays);
 
     //for later debugging
-    console.log("Exercises record inserted");
+    //console.log("Exercises record inserted");
   }
-  resetDB() {
-    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
-  }
-
+  //get all data from the database 
   getAllEntries() {
     //-----------------------------------------------------------------------
     //format a date for displaying
@@ -109,7 +106,7 @@ class Planner {
     //-----------------------------------------------------------------------
     //loop thorugh the collection and format the date.
     function myFunction(item, index, arr) {
-      arr[index].exdate = formatDate(item.exdate);
+      arr[index].date = formatDate(item.date);
     }
     //-----------------------------------------------------------------------
     //return a Promise object, which can be resolved or rejected
@@ -122,13 +119,16 @@ class Planner {
           reject(err);
           //if no error resolve the promise & return the data
         } else {
-          entries.forEach(myFunction);
-          entries.sort((a, b) => {
+          //entries.forEach(myFunction);
+          /*entries.sort((a, b) => {
             return a.exdate > b.exdate ? 1 : a.exdate < b.exdate ? -1 : 0;
-          });
-          resolve(entries);
+          });*/
+
+          const sortedEntries = entries.sort((a, b) => a.date - b.date);
+          sortedEntries.forEach(myFunction);
+          resolve(sortedEntries);
           //to see what the returned data looks like
-          console.log("function all() returns: ", entries);
+          console.log("function all() returns: ", sortedEntries);
         }
       });
     });
@@ -146,6 +146,8 @@ class Planner {
       });
     });
   }
+
+  // UPDATE
   createGoal(dayIn) {
     var goal = {
       day: dayIn.day,
