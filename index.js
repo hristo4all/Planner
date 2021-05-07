@@ -7,6 +7,7 @@ const mustache = require("mustache-express");
 const auth = require("./auth/auth");
 const passport = require("passport");
 const session = require("express-session");
+const bodyParser = require('body-parser')
 //------------------------------------------------------------------------------------------------------------
 const app = express();
 //------------------------------------------------------------------------------------------------------------
@@ -28,6 +29,7 @@ app.use(
 );
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(bodyParser.urlencoded({extended:false}));
 // initialize authentication with passport
 auth.init();
 //------------------------------------------------------------------------------------------------------------

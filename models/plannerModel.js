@@ -73,6 +73,7 @@ class Planner {
     //=================================================================
     var objDays = []; // array to hold the day object
     var x; //counter
+    var id=1
     for (x = 0; x < dates.length; x++) {
       var day = {
         name: dayNames[dates[x].getDay()],
@@ -80,6 +81,7 @@ class Planner {
         achievement: "",
         user: "",
         date: dates[x],
+        dayId: id+x,
       };
       objDays.push(day);
     }
@@ -130,9 +132,10 @@ class Planner {
   }
   //-----------------------------------------------------------------------------------
   getDayById(dayIdIn) {
-    console.log("this is getDayById");
+    //var parsed = parseInt(dayIdIn,10);
+    //console.log("this is getDayById" + parsed);
     return new Promise((resolve, reject) => {
-      this.db.find({ _id: dayIdIn }, function (err, day) {
+      this.db.find({ dayId: parseInt(dayIdIn,10) }, function (err, day) {
         if (err) {
           console.log("error occured in Planner model");
           reject(err);
@@ -147,30 +150,29 @@ class Planner {
   //-----------------------------------------------------------------------------------
 
   // UPDATE
-  createGoal(dayIn) {
-    var goal = {
-      day: dayIn.day,
-      exercise: dayIn.exercise,
-      actualAchievement: dayIn.actualAchievement,
-      user: dayIn.user,
-      exdate: dayIn.exdate,
-    };
-    console.log("goal created");
-    console.log(goal);
-    /*db.update(
-      { day: dayIn },
-      { $set: { exercise: exerciseIn } },
-      { multi: true },
+  setGoal(id,newGoal) {
+    console.log("setGoal id: "+id);
+    this.db.update(
+      { dayId:parseInt(id,10)}, 
+      { $set: { goal: newGoal} },
       function (err, numReplaced) {
-        console.log(err);
+        console.log("replaced---->" + numReplaced);
       }
-    );*/
-    this.db.insert(goal, function (err, doc) {
-      if (err) {
-        console.log("Error inserting document", subject);
-      }
-    });
+      //add setAchievement(id, "") to reset achievement
+      );
   }
+  //-----------------------------------------------------------------------------------
+  setAchievement(id,achievement){
+    this.db.update(
+      { dayId:id}, 
+      {$set:{achievement: achievement}},
+      function (err, numReplaced) {
+        console.log("replaced---->" + numReplaced);
+      }
+      );
+
+  }
+  //-----------------------------------------------------------------------------------
   formatDate(date) {
     if (date == "" || date == null) {
       return -1;
@@ -180,7 +182,8 @@ class Planner {
       );
     }
   }
-}
+    //-----------------------------------------------------------------------------------
+}// end of class
 function formatDate(date) {
   if (date == "" || date == null) {
     return -1;

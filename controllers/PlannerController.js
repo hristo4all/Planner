@@ -28,7 +28,7 @@ exports.goals_list = function (req, res) {
       res.render("planner", {
         title: "Planner",
         today: today,
-        exercises: list,
+        days: list,
         PlannerNav: 'class="current"',
         user: req.user,
       });
@@ -117,9 +117,9 @@ exports.modifyGoal_page = function (req, res) {
 };
 //-----------------------------------------------------------------------------------------
 exports.add_goal = function (req, res) {
-  let dayId = req.params.dayId;
-  console.log("this is the day ID:" +dayId);
-  db.getDayById(dayId)
+  let id = req.params.dayId;
+  console.log("this is the day ID: " +id);
+  db.getDayById(id)
     .then((day) => {
       res.render("newGoal", {
         title: "Set Goal",
@@ -146,7 +146,10 @@ exports.add_goal = function (req, res) {
 };
 exports.post_add_goal = function (req, res) {
   console.log("this is POST");
-  
+  console.log(req.body.goal );
+  //console.log("this is the req dayIn: "+req.params.dayId);
+  db.setGoal(req.params.dayId,req.body.goal );
+  res.redirect('/');
 };
 
 //-----------------------------------------------------------------------------------------

@@ -45,14 +45,14 @@
     <br />
 
     <div class="grid-container">
-      {{#exercises}}
+      {{#days}}
       <div class="grid-item">
         <div id="day" value="{{ name }}">{{ date }} {{ name }}</div>
         <hr />
         <p><b>Goal: </b>{{ goal }}</p>
         <div class="form-group">
           <div>
-            <a href="/new/{{ name }}/{{_id}}" class="btn btn-primary">Set Goal</a>
+            <a href="/new/{{ name }}/{{dayId}}" class="btn btn-primary">Set Goal</a>
           </div>
         </div>
         <hr />
@@ -61,7 +61,7 @@
           <input type="submit" value="Set Result" class="btn btn-primary" />
         </div>
       </div>
-      {{/exercises}}
+      {{/days}}
     </div>
     <hr/>
   </body>

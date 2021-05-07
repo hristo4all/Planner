@@ -16,8 +16,8 @@ router.get("/modify", function (req, res) {
 //---------------------------------------------------------------------------
 //router.get("/add", controller.add_goal);
 //router.get("/new", ensureLoggedIn("/login"), controller.add_goal);
-router.get("/new/:day/:dayId", ensureLoggedIn("/login"), controller.add_goal);
-router.post("/new/:day/:dayId", ensureLoggedIn("/login"), controller.post_add_goal);
+router.get("/new/:name/:dayId", ensureLoggedIn("/login"), controller.add_goal);
+router.post("/new/:name/:dayId", ensureLoggedIn("/login"), controller.post_add_goal);
 //---------------------------------------------------------------------------
 //user registration routes
 router.get("/register", controller.show_register_page);
