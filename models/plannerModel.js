@@ -71,19 +71,19 @@ class Planner {
       "Saturday",
     ];
     //=================================================================
-    var objDays = []; // array to hold the day object 
+    var objDays = []; // array to hold the day object
     var x; //counter
     for (x = 0; x < dates.length; x++) {
       var day = {
         name: dayNames[dates[x].getDay()],
-        goal:"20x Bench Press",
-        achievement:"test",
-        user:"Hristo",
+        goal: "",
+        achievement: "",
+        user: "",
         date: dates[x],
       };
       objDays.push(day);
     }
-    //used for debugging 
+    //used for debugging
     console.log(objDays);
     console.log("Inserted into db: ");
     //console.log(exercises);
@@ -94,18 +94,13 @@ class Planner {
     //for later debugging
     //console.log("Exercises record inserted");
   }
-  //get all data from the database 
+  //get all data from the database
   getAllEntries() {
     //-----------------------------------------------------------------------
     //format a date for displaying
-    function formatDate(date) {
-      return (
-        date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-      );
-    }
     //-----------------------------------------------------------------------
     //loop thorugh the collection and format the date.
-    function myFunction(item, index, arr) {
+    function forEachFunction(item, index, arr) {
       arr[index].date = formatDate(item.date);
     }
     //-----------------------------------------------------------------------
@@ -119,13 +114,13 @@ class Planner {
           reject(err);
           //if no error resolve the promise & return the data
         } else {
-          //entries.forEach(myFunction);
+          //entries.forEach(forEachFunction);
           /*entries.sort((a, b) => {
             return a.exdate > b.exdate ? 1 : a.exdate < b.exdate ? -1 : 0;
           });*/
 
           const sortedEntries = entries.sort((a, b) => a.date - b.date);
-          sortedEntries.forEach(myFunction);
+          sortedEntries.forEach(forEachFunction);
           resolve(sortedEntries);
           //to see what the returned data looks like
           console.log("function all() returns: ", sortedEntries);
@@ -133,19 +128,23 @@ class Planner {
       });
     });
   }
-  getEntriesByDay(dayIn) {
-    console.log("this is getEntriesByDay");
+  //-----------------------------------------------------------------------------------
+  getDayById(dayIdIn) {
+    console.log("this is getDayById");
     return new Promise((resolve, reject) => {
-      this.db.find({ day: dayIn }, function (err, day) {
+      this.db.find({ _id: dayIdIn }, function (err, day) {
         if (err) {
-          console.log("error occured");
+          console.log("error occured in Planner model");
           reject(err);
         } else {
+          console.log("Found day:");
+          //console.log(day);
           resolve(day);
         }
       });
     });
   }
+  //-----------------------------------------------------------------------------------
 
   // UPDATE
   createGoal(dayIn) {
@@ -172,7 +171,26 @@ class Planner {
       }
     });
   }
+  formatDate(date) {
+    if (date == "" || date == null) {
+      return -1;
+    } else {
+      return (
+        date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+      );
+    }
+  }
 }
+function formatDate(date) {
+  if (date == "" || date == null) {
+    return -1;
+  } else {
+    return (
+      date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+    );
+  }
+}
+
 const dao = new Planner("planner.db");
 //dao.init();
 module.exports = dao;

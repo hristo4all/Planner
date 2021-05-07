@@ -117,34 +117,36 @@ exports.modifyGoal_page = function (req, res) {
 };
 //-----------------------------------------------------------------------------------------
 exports.add_goal = function (req, res) {
-  res.render("newGoal", {
-    title: "Add Goal",
-    NewGoal: 'class="current"',
-    user: req.user.user,
-    day: req.params.day,
-  });
-};
-exports.post_add_goal = function (req, res) {
-  console.log("this is POST");
-  //var x = document.getElementById("days").value;
-  //console.log(req.params.day);
-
-  console.log("entry is:");
-  //console.log(day);
-  db.getEntriesByDay(req.params.day)
+  let dayId = req.params.dayId;
+  console.log("this is the day ID:" +dayId);
+  db.getDayById(dayId)
     .then((day) => {
-      //day.exercise = "testing";
-      console.log("promise resolved");
-      console.log("entry is:");
+      res.render("newGoal", {
+        title: "Set Goal",
+        formattedDate:req.params.date,
+        dayV: day,
+        PlannerNav: 'class="current"',
+      });
+      console.log("Controller promise resolved");
       console.log(day);
-      //implement create/edit goal
-      //db.createGoal(day);
-      res.redirect("/");
     })
     .catch((err) => {
       console.log("Error: ");
       console.log(JSON.stringify(err));
     });
+/*
+  res.render("newGoal", {
+    title: "Set Goal",
+    NewGoal: 'class="current"',
+    day:dayObj,
+    //user: req.user.user,
+    //day: req.params.day,
+    //dayId:req.params.dayId,
+  });*/
+};
+exports.post_add_goal = function (req, res) {
+  console.log("this is POST");
+  
 };
 
 //-----------------------------------------------------------------------------------------
