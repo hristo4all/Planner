@@ -149,7 +149,7 @@ exports.post_add_goal = function (req, res) {
   console.log(req.body.goal );
   //console.log("this is the req dayIn: "+req.params.dayId);
   db.setGoal(req.params.dayId,req.body.goal );
-  res.redirect('/');
+  res.redirect('/planner');
 };
 
 //-----------------------------------------------------------------------------------------

@@ -49,9 +49,12 @@ class Planner {
       var date = new Date(year, month, 1);
       var days = [];
       while (date.getMonth() === month) {
-        days.push(new Date(date));
         date.setDate(date.getDate() + 1);
+        days.push(new Date(date));
+        
       }
+      //console.log("days:");
+      //console.log(days);
       return days;
     }
     var date = new Date();
@@ -59,6 +62,9 @@ class Planner {
     var year = date.getFullYear();
 
     var dates = getDaysInMonth(month, year);
+    //console.log("this is dates:");
+    //console.log(dates);
+    //console.log(dates.length);
     //=================================================================
     //array with each name of day of the week
     var dayNames = [
@@ -73,7 +79,6 @@ class Planner {
     //=================================================================
     var objDays = []; // array to hold the day object
     var x; //counter
-    var id=1
     for (x = 0; x < dates.length; x++) {
       var day = {
         name: dayNames[dates[x].getDay()],
@@ -81,7 +86,7 @@ class Planner {
         achievement: "",
         user: "",
         date: dates[x],
-        dayId: id+x,
+        dayId: x+1,
       };
       objDays.push(day);
     }
