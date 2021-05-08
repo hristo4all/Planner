@@ -1,5 +1,6 @@
 const nedb = require("nedb");
 var moment = require('moment');  
+const { format } = require("path");
 class Planner {
   constructor(dbFilePath) {
     if (dbFilePath) {
@@ -52,8 +53,8 @@ class Planner {
         days.push(new Date(date));
         date.setUTCDate(date.getUTCDate() + 1);
       }
-      console.log("days:");
-      console.log(days);
+      //console.log("days:");
+      //console.log(days);
       return days;
     }
    
@@ -63,7 +64,7 @@ class Planner {
 
     var dates = getDaysInMonthUTC(month, year);
     //console.log("this is dates:");
-    console.log(dates);
+    //console.log(dates);
     //console.log(dates.length);
     //=================================================================
     //array with each name of day of the week
@@ -91,7 +92,7 @@ class Planner {
       objDays.push(day);
     }
     //used for debugging
-    console.log(objDays);
+    //console.log(objDays);
     console.log("Inserted into db: ");
     //console.log(exercises);
     //----------------------------------------------------------------------
@@ -108,13 +109,13 @@ class Planner {
     //-----------------------------------------------------------------------
     //loop thorugh the collection and format the date.
     function forEachFunction(item, index, arr) {
-      console.log("==========================================================");
+      /*console.log("==========================================================");
       console.log(arr[index].date);
       console.log("----------------------------------------------------------");
       console.log(item);
       console.log("----------------------------------------------------------");
       console.log(formatDate(item.date));
-      console.log("==========================================================");
+      console.log("==========================================================");*/
       item.date=formatDate(item.date);
     }
     //-----------------------------------------------------------------------
@@ -137,7 +138,7 @@ class Planner {
           entries.forEach(forEachFunction);
           resolve(entries);
           //to see what the returned data looks like
-          console.log("function all() returns: ", entries);
+          //console.log("function all() returns: ", entries);
         }
       });
     });
@@ -176,7 +177,7 @@ class Planner {
   //-----------------------------------------------------------------------------------
   setAchievement(id,achievement){
     this.db.update(
-      { dayId:id}, 
+      { dayId:parseInt(id,10)}, 
       {$set:{achievement: achievement}},
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
@@ -186,7 +187,7 @@ class Planner {
   }
   //-----------------------------------------------------------------------------------
   formatDate(date) {
-    console.log("this is the method formatDate")
+    //console.log("this is the method formatDate")
     if (date == "" || date == null) {
       return -1;
     } else {

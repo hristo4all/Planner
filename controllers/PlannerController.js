@@ -18,9 +18,7 @@ exports.landing_page = function (req, res) {
 exports.goals_list = function (req, res) {
   //-----------------------------------------------------------------------
   // find today's date
-  var date = new Date();
-  var today =
-    date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate();
+  var today = db.formatDate(new Date());
   //-----------------------------------------------------------------------
 
   db.getAllEntries()
@@ -33,7 +31,7 @@ exports.goals_list = function (req, res) {
         user: req.user,
       });
       console.log("Controller goalsList promise resolved");
-      console.log(list);
+      //console.log(list);
     })
     .catch((err) => {
       console.log("promise rejected", err);
@@ -123,7 +121,6 @@ exports.add_goal = function (req, res) {
     .then((day) => {
       res.render("newGoal", {
         title: "Set Goal",
-        formattedDate:req.params.date,
         dayV: day,
         PlannerNav: 'class="current"',
       });
@@ -134,15 +131,6 @@ exports.add_goal = function (req, res) {
       console.log("Error: ");
       console.log(JSON.stringify(err));
     });
-/*
-  res.render("newGoal", {
-    title: "Set Goal",
-    NewGoal: 'class="current"',
-    day:dayObj,
-    //user: req.user.user,
-    //day: req.params.day,
-    //dayId:req.params.dayId,
-  });*/
 };
 exports.post_add_goal = function (req, res) {
   console.log("this is POST");
@@ -153,9 +141,31 @@ exports.post_add_goal = function (req, res) {
 };
 
 //-----------------------------------------------------------------------------------------
-exports.enter_actualAchievement = function (req, res) {
-  res.render("actualAchievement", {
-    title: "Enter Actual Achievement",
-  });
+exports.set_Achievement = function (req, res) {
+  console.log("GET ACHIEVEMENT")
+  let id = req.params.dayId;
+  console.log("this is the day ID: " +id);
+  db.getDayById(id)
+    .then((day) => {
+      res.render("setAchievement", {
+        title: "Set Achievement",
+        day: day,
+        PlannerNav: 'class="current"',
+      });
+      console.log("set achievement Controller promise resolved");
+      console.log(day);
+    })
+    .catch((err) => {
+      console.log("Error: ");
+      console.log(JSON.stringify(err));
+    });
+};
+exports.post_set_Achievement = function (req, res) {
+  console.log("this is SET ACHIEVEMENT POST");
+  console.log(req.body.achievement );
+  console.log(req.params.dayId);
+  //console.log("this is the req dayIn: "+req.params.dayId);
+  db.setAchievement(req.params.dayId,req.body.achievement );
+  res.redirect('/planner');
 };
 //-----------------------------------------------------------------------------------------

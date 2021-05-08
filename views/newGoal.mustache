@@ -9,7 +9,7 @@
     <div class="container">
       <h2>{{ title }}</h2>
       {{#dayV}}
-      <h2>Setting Goal for {{ name }} {{date}}</h2>
+      <h2>Setting Goal for {{ name }}</h2>
       <form method="post" role="form" action="">
         <div class="form-group">
           <label for="goal">Goal</label>
@@ -19,6 +19,7 @@
             id="goal"
             name="goal"
             placeholder="Enter Goal"
+            value="{{goal}}"
             required
           />
         </div>

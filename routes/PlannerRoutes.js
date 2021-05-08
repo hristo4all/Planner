@@ -31,8 +31,9 @@ router.post("/login", auth.authorize("/login"), controller.post_login);
 //---------------------------------------------------------------------------
 router.get("/logout", controller.logout);
 //---------------------------------------------------------------------------
-router.get("/actual", controller.enter_actualAchievement);
-
+router.get("/setAchievement/:name/:dayId", controller.set_Achievement);
+router.post("/setAchievement/:name/:dayId", controller.post_set_Achievement);
+//---------------------------------------------------------------------------
 router.use(function (req, res) {
   res.status(404);
   res.type("text/plain");
