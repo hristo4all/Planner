@@ -169,3 +169,8 @@ exports.post_set_Achievement = function (req, res) {
   res.redirect('/planner');
 };
 //-----------------------------------------------------------------------------------------
+exports.get_notAchievedGoals = function (req, res) {
+  res.render("notAchievedGoals",
+   { title: "Not Achieved Goals" });
+};
+//-----------------------------------------------------------------------------------------

@@ -1,11 +1,11 @@
 <html lang="en">
   <head>
     {{
-      >_header
+      >partial/_header
     }}
   </head>
   <body class="container">
-    {{>_navbar}}
+    {{>partial/_navbar}}
     <h1>{{ title }}</h1>
     <h3>New User Registration</h3>
 
@@ -39,4 +39,7 @@
       </div>
     </form>
   </body>
+  {{
+    >partial/_footer
+  }}
 </html>
