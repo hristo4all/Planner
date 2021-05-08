@@ -36,6 +36,8 @@ router.post("/setAchievement/:name/:dayId", controller.post_set_Achievement);
 //---------------------------------------------------------------------------
 router.get("/notAchieved", ensureLoggedIn("/login"), controller.get_notAchievedGoals);
 //---------------------------------------------------------------------------
+router.get("/achieved", ensureLoggedIn("/login"), controller.get_achievedGoals);
+//---------------------------------------------------------------------------
 router.use(function (req, res) {
   res.status(404);
   res.type("text/plain");

@@ -2,6 +2,7 @@
 const userDao = require("../models/userModel");
 const db = require("../models/plannerModel");
 db.init();
+var today = db.formatDate(new Date());
 //-----------------------------------------------------------------------------------------
 exports.landing_page = function (req, res) {
   res.render("landingPage", {
@@ -18,7 +19,7 @@ exports.landing_page = function (req, res) {
 exports.goals_list = function (req, res) {
   //-----------------------------------------------------------------------
   // find today's date
-  var today = db.formatDate(new Date());
+  //var today = db.formatDate(new Date());
   //-----------------------------------------------------------------------
 
   db.getAllEntries()
@@ -170,7 +171,35 @@ exports.post_set_Achievement = function (req, res) {
 };
 //-----------------------------------------------------------------------------------------
 exports.get_notAchievedGoals = function (req, res) {
-  res.render("notAchievedGoals",
-   { title: "Not Achieved Goals" });
+  db.getNotAchievedGoals(req.user.user).then((notAchievedGoals) => {
+    res.render("notAchievedGoals", {
+      title: " List of Not achieved Goals",
+      days: notAchievedGoals,
+      today:today,
+      notAchieved: 'class="current"',
+    });
+    console.log("set achievement Controller promise resolved");
+    console.log(notAchievedGoals);
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
+  });
+};
+exports.get_achievedGoals = function (req, res) {
+  db.getAchievedGoals(req.user.user).then((notAchievedGoals) => {
+    res.render("achievedGoals", {
+      title: " List of Achieved Goals",
+      days: notAchievedGoals,
+      today:today,
+      achieved: 'class="current"',
+    });
+    console.log("set achievement Controller promise resolved");
+    console.log(notAchievedGoals);
+  })
+  .catch((err) => {
+    console.log("Error: ");
+    console.log(JSON.stringify(err));
+  });
 };
 //-----------------------------------------------------------------------------------------

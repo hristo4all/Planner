@@ -85,7 +85,7 @@ class Planner {
         name: dayNames[dates[x].getUTCDay()],
         goal: "",
         achievement: "",
-        user: "",
+        user: "123",
         date: dates[x],
         dayId: x+1,
       };
@@ -104,9 +104,6 @@ class Planner {
   }
   //get all data from the database
   getAllEntries() {
-    //-----------------------------------------------------------------------
-    //format a date for displaying
-    //-----------------------------------------------------------------------
     //loop thorugh the collection and format the date.
     function forEachFunction(item, index, arr) {
       /*console.log("==========================================================");
@@ -156,6 +153,75 @@ class Planner {
           console.log("Found day:");
           //console.log(day);
           resolve(day);
+        }
+      });
+    });
+  }
+  //=====================================================================================
+  getNotAchievedGoals(user) {
+    //var parsed = parseInt(dayIdIn,10);
+    //console.log("this is getDayById" + parsed);
+    console.log("this is getNotAchievedGoals()")
+    console.log("user is: "+user);
+    return new Promise((resolve, reject) => {
+      this.db.find({user:user}, function (err, days) {
+        if (err) {
+          console.log("error occured in Planner model:getNotAchievedGoals()");
+          reject(err);
+        } else {
+          var notAchievedGoals=[];
+          console.log("days:")
+          console.log(days);
+          days.forEach(myFunction);
+          function myFunction(item, index) {
+            //var test =[];
+            if(item.goal!="" && item.achievement==="")
+            {
+              item.date=formatDate(item.date);
+              notAchievedGoals.push(item);
+              console.log("inside foreach");
+              console.log(item);
+            }
+          }
+          //notAchievedGoals.forEach(myFunction);
+          resolve(notAchievedGoals);
+          console.log("Not Achieved Goals:")
+          console.log(notAchievedGoals);
+        }
+      });
+    });
+  }
+  //-----------------------------------------------------------------------------------
+
+  getAchievedGoals(user) {
+    //var parsed = parseInt(dayIdIn,10);
+    //console.log("this is getDayById" + parsed);
+    console.log("this is getNotAchievedGoals()")
+    console.log("user is: "+user);
+    return new Promise((resolve, reject) => {
+      this.db.find({user:user}, function (err, days) {
+        if (err) {
+          console.log("error occured in Planner model:getNotAchievedGoals()");
+          reject(err);
+        } else {
+          var notAchievedGoals=[];
+          console.log("days:")
+          console.log(days);
+          days.forEach(myFunction);
+          function myFunction(item, index) {
+            //var test =[];
+            if(item.goal!="" && item.achievement!="")
+            {
+              item.date=formatDate(item.date);
+              notAchievedGoals.push(item);
+              console.log("inside foreach");
+              console.log(item);
+            }
+          }
+          //notAchievedGoals.forEach(myFunction);
+          resolve(notAchievedGoals);
+          console.log("Not Achieved Goals:")
+          console.log(notAchievedGoals);
         }
       });
     });
