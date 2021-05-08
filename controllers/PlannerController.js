@@ -32,18 +32,18 @@ exports.goals_list = function (req, res) {
         PlannerNav: 'class="current"',
         user: req.user,
       });
-      console.log("promise resolved");
-      //console.log(list);
+      console.log("Controller goalsList promise resolved");
+      console.log(list);
     })
     .catch((err) => {
       console.log("promise rejected", err);
     });
 
   //-----------------------------------------------------------------------
-  var firstDay = new Date();
-  var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
-  console.log("next week is ");
-  console.log(nextWeek);
+  //var firstDay = new Date();
+  //var nextWeek = new Date(firstDay.getTime() + 7 * 24 * 60 * 60 * 1000);
+  //console.log("next week is ");
+  //console.log(nextWeek);
   //-----------------------------------------------------------------------
 };
 //-----------------------------------------------------------------------------------------

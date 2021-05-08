@@ -1,5 +1,5 @@
 const nedb = require("nedb");
-
+var moment = require('moment');  
 class Planner {
   constructor(dbFilePath) {
     if (dbFilePath) {
@@ -45,25 +45,25 @@ class Planner {
      * @param {int} The year, not zero based, required to account for leap years
      * @return {Date[]} List with date objects for each day of the month
      */
-    function getDaysInMonth(month, year) {
-      var date = new Date(year, month, 1);
+    function getDaysInMonthUTC(month, year) {
+      var date = new Date(Date.UTC(year, month, 1));
       var days = [];
-      while (date.getMonth() === month) {
-        date.setDate(date.getDate() + 1);
+      while (date.getUTCMonth() === month) {
         days.push(new Date(date));
-        
+        date.setUTCDate(date.getUTCDate() + 1);
       }
-      //console.log("days:");
-      //console.log(days);
+      console.log("days:");
+      console.log(days);
       return days;
     }
+   
     var date = new Date();
-    var month = date.getMonth();
-    var year = date.getFullYear();
+    var month = date.getUTCMonth();
+    var year = date.getUTCFullYear();
 
-    var dates = getDaysInMonth(month, year);
+    var dates = getDaysInMonthUTC(month, year);
     //console.log("this is dates:");
-    //console.log(dates);
+    console.log(dates);
     //console.log(dates.length);
     //=================================================================
     //array with each name of day of the week
@@ -81,7 +81,7 @@ class Planner {
     var x; //counter
     for (x = 0; x < dates.length; x++) {
       var day = {
-        name: dayNames[dates[x].getDay()],
+        name: dayNames[dates[x].getUTCDay()],
         goal: "",
         achievement: "",
         user: "",
@@ -108,7 +108,14 @@ class Planner {
     //-----------------------------------------------------------------------
     //loop thorugh the collection and format the date.
     function forEachFunction(item, index, arr) {
-      arr[index].date = formatDate(item.date);
+      console.log("==========================================================");
+      console.log(arr[index].date);
+      console.log("----------------------------------------------------------");
+      console.log(item);
+      console.log("----------------------------------------------------------");
+      console.log(formatDate(item.date));
+      console.log("==========================================================");
+      item.date=formatDate(item.date);
     }
     //-----------------------------------------------------------------------
     //return a Promise object, which can be resolved or rejected
@@ -126,11 +133,11 @@ class Planner {
             return a.exdate > b.exdate ? 1 : a.exdate < b.exdate ? -1 : 0;
           });*/
 
-          const sortedEntries = entries.sort((a, b) => a.date - b.date);
-          sortedEntries.forEach(forEachFunction);
-          resolve(sortedEntries);
+          entries.sort((a, b) => a.dayId - b.dayId);
+          entries.forEach(forEachFunction);
+          resolve(entries);
           //to see what the returned data looks like
-          console.log("function all() returns: ", sortedEntries);
+          console.log("function all() returns: ", entries);
         }
       });
     });
@@ -179,23 +186,28 @@ class Planner {
   }
   //-----------------------------------------------------------------------------------
   formatDate(date) {
+    console.log("this is the method formatDate")
     if (date == "" || date == null) {
       return -1;
     } else {
       return (
-        date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+        //date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+        moment(date).format("MMM Do YYYY")
       );
     }
   }
     //-----------------------------------------------------------------------------------
 }// end of class
+
 function formatDate(date) {
+  //console.log("this is the function formatDate")
   if (date == "" || date == null) {
     return -1;
   } else {
     return (
-      date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
-    );
+      //date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
+      moment(date).format("MMM Do YYYY")
+    )
   }
 }
 
