@@ -4,61 +4,112 @@
       >partial/_header
     }}
     <style>
+      hr{
+        border-top: 1px solid black;
+        margin: 3px;
+      }
       .grid-container {
         display: grid;
-        grid-template-columns: auto auto auto auto auto auto auto;
-        grid-gap: 10px;
+        height: auto;
+        width: auto;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr ;
+        grid-template-rows:1fr ;
+        grid-template-areas: 
+        "day day day day day ";
+        grid-gap: 5px;
         background-color: #2196f3;
-        padding: 10px;
+        padding: 5px;
       }
 
       .grid-item {
         background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid rgba(0, 0, 0, 0.8);
-        padding: 20px;
+        padding: 55px;
+        padding-top: 0px;
+        padding-bottom: 0%;
         font-size: 30px;
+        min-width:fit-content;
+        max-width: fit-content;
+        max-height: fit-content;
         text-align: center;
-      }
-      .grid-item1 {
-        background-color: rgba(255, 255, 255, 0.8);
-        border: 1px solid rgba(0, 0, 0, 0.8);
-        padding: 20px;
-        font-size: 30px;
-        text-align: center;
-        align-content: center;
+        grid-template-areas:"day";
       }
       p {
         font-size: 20px;
+
       }
       .plannerBody {
         font-size: 20px;
+        padding-top: 0px;
+        margin-top: 0px;
       }
+      .form-group{
+        display:inline-block;
+    
+      }
+      .buttons a{
+        border: 1px solid #17a2b8;
+        padding-right: 3px; 
+        padding-left: 3px; 
+        color: black;
+        margin: 5px;
+        width: 90%;
+      }
+      .buttons [data-type="set"]:hover{
+        border: 1px solid #17a2b8;
+        background-color: #17a2b8;
+      }
+      .buttons [data-type="complete"]:hover{
+        border: 1px solid #28a745;
+        background-color: #28a745;
+      }
+      .buttons [data-type="delete"]:hover{
+        border: 1px solid #dc3545;
+        background-color: #dc3545;
+      }
+      h2{
+        background-color:#17a2b8;
+        color: black;
+        width: 100%;
+      }
+      .title, .today{
+        text-align: center;
+      }
+      .date{
+        opacity: 80%;
+      }
+      .empty {
+      color: black;
+      background-color: #2196f3;
+      text-align: center;
+      width: 100%;
+      grid-template-areas: "day";
+    }
     </style>
   </head>
 
   <body>
     {{>partial/_navbar}}
-    <h1>
-     {{ title }} 
+    <h1 class="title">
+      {{ title }}
     </h1>
-    <hr />
-    <h2>Today is {{ today }}</h2>
+    <hr/>
+    <h3 class="today">Today is {{ today }}</h3>
+    <br />
+
     <div class="grid-container">
       {{#days}}
       <div class="grid-item">
-        <div id="day" value="{{ name }}">{{ date }} {{ name }}</div>
+        <div id="day" value="{{ name }}"><h2>{{ name }}</h2> <hr /><h3 class="date">{{ date }}</h3> </div>
+        <p><b>Goal: </b> <i>{{ goal }}</i></p>
         <hr />
-        <p><b>Goal: </b>{{ goal }}</p>
-        <div class="form-group">
-        </div>
-        <hr />
-        <p class="plannerBody"><b>Achievement:</b>  {{achievement}}</p>
+        <p class="plannerBody"><b>Achievement:</b>  <i>{{achievement}} </i></p>
       </div>
       {{/days}}
-      {{^days}}
-  <h2 style="color:white;">You have no completed achievements</h2>
-{{/days}}
     </div>
+    {{^days}}
+    <div class="empty"><p>You have no achieved goals</p></div>
+  {{/days}}
     <hr/>
   </body>
   

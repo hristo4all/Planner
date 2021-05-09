@@ -1,6 +1,7 @@
 //const guestbookDAO = require("../models/plannerModel");
 const userDao = require("../models/userModel");
 const db = require("../models/plannerModel");
+//const { formatDate } = require("../models/plannerModel");
 db.init();
 var today = db.formatDate(new Date());
 //-----------------------------------------------------------------------------------------
@@ -25,7 +26,7 @@ exports.goals_list = function (req, res) {
   db.getAllEntries()
     .then((list) => {
       res.render("planner", {
-        title: "Planner",
+        title: "Monthly Planner",
         today: today,
         days: list,
         PlannerNav: 'class="current"',
@@ -137,7 +138,7 @@ exports.post_add_goal = function (req, res) {
   console.log("this is POST");
   console.log(req.body.goal );
   //console.log("this is the req dayIn: "+req.params.dayId);
-  db.setGoal(req.params.dayId,req.body.goal );
+  db.setGoal(req.params.dayId,req.body.goal,req.user.user);
   res.redirect('/planner');
 };
 
@@ -151,6 +152,7 @@ exports.set_Achievement = function (req, res) {
       res.render("setAchievement", {
         title: "Set Achievement",
         day: day,
+        formatted: db.formatDate(day.date),
         PlannerNav: 'class="current"',
       });
       console.log("set achievement Controller promise resolved");
@@ -203,3 +205,20 @@ exports.get_achievedGoals = function (req, res) {
   });
 };
 //-----------------------------------------------------------------------------------------
+exports.delete_Goal = function (req, res) {
+db.deleteGoal(req.params.dayId);
+res.redirect("/planner");
+};
+//-----------------------------------------------------------------------------------------
+exports.delete_Achievement = function (req, res) {
+  db.deleteAchievement(req.params.dayId);
+  res.redirect("/planner");
+  };
+  //-----------------------------------------------------------------------------------------
+  //-----------------------------------------------------------------------------------------
+exports.mark_Completed_Goal = function (req, res) {
+  db.markGoal(req.params.dayId);
+  res.redirect("/planner");
+  };
+  //-----------------------------------------------------------------------------------------
+

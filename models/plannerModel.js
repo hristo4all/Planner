@@ -85,7 +85,7 @@ class Planner {
         name: dayNames[dates[x].getUTCDay()],
         goal: "",
         achievement: "",
-        user: "123",
+        user: "",
         date: dates[x],
         dayId: x+1,
       };
@@ -126,11 +126,6 @@ class Planner {
           reject(err);
           //if no error resolve the promise & return the data
         } else {
-          //entries.forEach(forEachFunction);
-          /*entries.sort((a, b) => {
-            return a.exdate > b.exdate ? 1 : a.exdate < b.exdate ? -1 : 0;
-          });*/
-
           entries.sort((a, b) => a.dayId - b.dayId);
           entries.forEach(forEachFunction);
           resolve(entries);
@@ -227,13 +222,31 @@ class Planner {
     });
   }
   //-----------------------------------------------------------------------------------
-
-  // UPDATE
-  setGoal(id,newGoal) {
+  setGoal(id,newGoal,userId) {
     console.log("setGoal id: "+id);
     this.db.update(
       { dayId:parseInt(id,10)}, 
       { $set: { goal: newGoal} },
+      function (err, numReplaced) {
+        console.log("replaced---->" + numReplaced);
+      }
+      //add setAchievement(id, "") to reset achievement
+      );
+      this.db.update(
+        { dayId:parseInt(id,10)}, 
+        { $set: { user: userId} },
+        function (err, numReplaced) {
+          console.log("replaced---->" + numReplaced);
+        }
+        //add setAchievement(id, "") to reset achievement
+        );
+  }
+  //-----------------------------------------------------------------------------------
+  deleteGoal(id) {
+    console.log("deleteGoal id: "+id);
+    this.db.update(
+      { dayId:parseInt(id,10)}, 
+      { $set: { goal: ""} },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
@@ -249,7 +262,26 @@ class Planner {
         console.log("replaced---->" + numReplaced);
       }
       );
-
+  }
+  //-----------------------------------------------------------------------------------
+  deleteAchievement(id){
+    this.db.update(
+      { dayId:parseInt(id,10)}, 
+      {$set:{achievement: ""}},
+      function (err, numReplaced) {
+        console.log("replaced---->" + numReplaced);
+      }
+      );
+  }
+  //-----------------------------------------------------------------------------------
+  markGoal(id){
+    this.db.update(
+      { dayId:parseInt(id,10)}, 
+      {$set:{achievement: "Achieved"}},
+      function (err, numReplaced) {
+        console.log("replaced---->" + numReplaced);
+      }
+      );
   }
   //-----------------------------------------------------------------------------------
   formatDate(date) {

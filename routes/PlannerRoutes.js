@@ -38,6 +38,11 @@ router.get("/notAchieved", ensureLoggedIn("/login"), controller.get_notAchievedG
 //---------------------------------------------------------------------------
 router.get("/achieved", ensureLoggedIn("/login"), controller.get_achievedGoals);
 //---------------------------------------------------------------------------
+router.get("/deleteGoal/:dayId", ensureLoggedIn("/login"), controller.delete_Goal);
+//---------------------------------------------------------------------------
+router.get("/deleteAchievement/:dayId", ensureLoggedIn("/login"), controller.delete_Achievement);
+//---------------------------------------------------------------------------
+router.get("/markCompletedGoal/:dayId", ensureLoggedIn("/login"), controller.mark_Completed_Goal);
 router.use(function (req, res) {
   res.status(404);
   res.type("text/plain");
