@@ -19,7 +19,11 @@
 ![Alt text](./pictures/Dependencies.png?raw=true "Optional Title")
 
 ### After installing all dependecies open a new Terminal in Visual Studio Code and run command 'node index.js' OR 'nodemon index.js' if you have nodemon installed.
-
+***
+### there is an account which can be used for testing. Which is as follws:
+* Username: 123
+* Password: 12345678
+***
 ## Instructions how to use the applicaiton:
 * To Register: Click on the Register button and fill in the form the click Register button.
 
