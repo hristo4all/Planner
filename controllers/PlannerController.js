@@ -1,9 +1,47 @@
 //const guestbookDAO = require("../models/plannerModel");
 const userDao = require("../models/userModel");
 const db = require("../models/plannerModel");
-//const { formatDate } = require("../models/plannerModel");
-db.init();
+
+//-----------------------------------------------------------------------------------------
 var today = db.formatDate(new Date());
+
+//var daysOfMonth = [];
+/*var test;
+test = db.getAllEntriesWithoutFormatting();
+console.log("---------------------------------------");
+console.log("");
+console.log("---------------------------------------");
+let daysOfMonth = db.getAllEntries();
+daysOfMonth.then(function(days){
+  console.log(days.length);
+  let lastDay = db.getDayById(days.length);
+console.log("===============================")
+lastDay.then(function(result) {
+  console.log(result)
+  var test = result;
+  console.log(Object.getOwnPropertyNames(test));
+})
+})
+console.log("==============================================================")
+var x = new Promise((resolve,object)=>{
+  resolve(db.getAllEntries());
+});
+console.log(x);
+//var lastDayOfMonth = db.getDayById(days.length).then(console.log(lastDayOfMonth));
+
+//db.init(); */
+//test = new Date(Date.UTC())
+let test = db.doInit();
+test.then(function(result) {
+  if(result){
+    db.init();
+  }
+  else{
+    console.log("no need for init()");
+  }
+})
+//db.init();
+
 //-----------------------------------------------------------------------------------------
 exports.landing_page = function (req, res) {
   res.render("landingPage", {

@@ -1,6 +1,5 @@
 const nedb = require("nedb");
-var moment = require('moment');  
-const { format } = require("path");
+var moment = require("moment");
 class Planner {
   constructor(dbFilePath) {
     if (dbFilePath) {
@@ -16,91 +15,63 @@ class Planner {
   }
 
   init() {
+    console.log("Planner init() called");
     //reset the database
-    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+    //this.db.remove({}, { multi: true }, function (err, numRemoved) {});
     //-----------------------------------------------------------------------
-    /*
-    // get this week's monday date
-    function getMonday(d) {
-      d = new Date(d);
-      var day = d.getDay(),
-        diff = d.getDate() - day + (day == 0 ? -6 : 1); // adjust when day is sunday
-      return new Date(d.setDate(diff));
-    }
-*/
-
-    // add a day to a date
-    /*
-    function addDay(date, days) {
-      var result = new Date(date);
-      result.setDate(result.getDate() + days);
-      return result;
-    }
-    */
-    //-----------------------------------------------------------------------
-    //var monday = getMonday(new Date());
-    //console.log(monday);
-    //----------------------------------------------------------------------
     /* Get all days and dates within a months
      * @param {int} The month number, 0 based
      * @param {int} The year, not zero based, required to account for leap years
      * @return {Date[]} List with date objects for each day of the month
      */
     function getDaysInMonthUTC(month, year) {
+      
+      //var date =new Date(Date.UTC(2021,7,1));
+      //month=7;
       var date = new Date(Date.UTC(year, month, 1));
       var days = [];
-      while (date.getUTCMonth() === month) {
-        days.push(new Date(date));
-        date.setUTCDate(date.getUTCDate() + 1);
-      }
+        while (date.getUTCMonth() === month) {
+          days.push(new Date(date));
+          date.setUTCDate(date.getUTCDate() + 1);
+        }
       //console.log("days:");
       //console.log(days);
       return days;
     }
-   
+
     var date = new Date();
     var month = date.getUTCMonth();
     var year = date.getUTCFullYear();
 
     var dates = getDaysInMonthUTC(month, year);
-    //console.log("this is dates:");
-    //console.log(dates);
-    //console.log(dates.length);
-    //=================================================================
-    //array with each name of day of the week
-    var dayNames = [
-      "Sunday",
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saturday",
-    ];
-    //=================================================================
-    var objDays = []; // array to hold the day object
-    var x; //counter
-    for (x = 0; x < dates.length; x++) {
-      var day = {
-        name: dayNames[dates[x].getUTCDay()],
-        goal: "",
-        achievement: "",
-        user: "",
-        date: dates[x],
-        dayId: x+1,
-      };
-      objDays.push(day);
-    }
-    //used for debugging
-    //console.log(objDays);
-    console.log("Inserted into db: ");
-    //console.log(exercises);
-    //----------------------------------------------------------------------
-    //insert array objDays to the databases
-    this.db.insert(objDays);
-
-    //for later debugging
-    //console.log("Exercises record inserted");
+      var dayNames = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+      //=================================================================
+      var objDays = []; // array to hold the day object
+      var x; //counter
+      for (x = 0; x < dates.length; x++) {
+        var day = {
+          name: dayNames[dates[x].getUTCDay()],
+          goal: "",
+          achievement: "",
+          user: "",
+          date: dates[x],
+          dayId: x + 1,
+        };
+        objDays.push(day);
+      }
+      //console.log(objDays);
+      console.log("Inserted into db: ");
+      //---------------------------------------
+      //insert array objDays to the databases
+      this.db.insert(objDays);
   }
   //get all data from the database
   getAllEntries() {
@@ -113,7 +84,7 @@ class Planner {
       console.log("----------------------------------------------------------");
       console.log(formatDate(item.date));
       console.log("==========================================================");*/
-      item.date=formatDate(item.date);
+      item.date = formatDate(item.date);
     }
     //-----------------------------------------------------------------------
     //return a Promise object, which can be resolved or rejected
@@ -140,7 +111,7 @@ class Planner {
     //var parsed = parseInt(dayIdIn,10);
     //console.log("this is getDayById" + parsed);
     return new Promise((resolve, reject) => {
-      this.db.find({ dayId: parseInt(dayIdIn,10) }, function (err, day) {
+      this.db.find({ dayId: parseInt(dayIdIn, 10) }, function (err, day) {
         if (err) {
           console.log("error occured in Planner model");
           reject(err);
@@ -156,23 +127,22 @@ class Planner {
   getNotAchievedGoals(user) {
     //var parsed = parseInt(dayIdIn,10);
     //console.log("this is getDayById" + parsed);
-    console.log("this is getNotAchievedGoals()")
-    console.log("user is: "+user);
+    console.log("this is getNotAchievedGoals()");
+    console.log("user is: " + user);
     return new Promise((resolve, reject) => {
-      this.db.find({user:user}, function (err, days) {
+      this.db.find({ user: user }, function (err, days) {
         if (err) {
           console.log("error occured in Planner model:getNotAchievedGoals()");
           reject(err);
         } else {
-          var notAchievedGoals=[];
-          console.log("days:")
+          var notAchievedGoals = [];
+          console.log("days:");
           console.log(days);
           days.forEach(myFunction);
           function myFunction(item, index) {
             //var test =[];
-            if(item.goal!="" && item.achievement==="")
-            {
-              item.date=formatDate(item.date);
+            if (item.goal != "" && item.achievement === "") {
+              item.date = formatDate(item.date);
               notAchievedGoals.push(item);
               console.log("inside foreach");
               console.log(item);
@@ -180,7 +150,7 @@ class Planner {
           }
           //notAchievedGoals.forEach(myFunction);
           resolve(notAchievedGoals);
-          console.log("Not Achieved Goals:")
+          console.log("Not Achieved Goals:");
           console.log(notAchievedGoals);
         }
       });
@@ -191,23 +161,22 @@ class Planner {
   getAchievedGoals(user) {
     //var parsed = parseInt(dayIdIn,10);
     //console.log("this is getDayById" + parsed);
-    console.log("this is getNotAchievedGoals()")
-    console.log("user is: "+user);
+    console.log("this is getNotAchievedGoals()");
+    console.log("user is: " + user);
     return new Promise((resolve, reject) => {
-      this.db.find({user:user}, function (err, days) {
+      this.db.find({ user: user }, function (err, days) {
         if (err) {
           console.log("error occured in Planner model:getNotAchievedGoals()");
           reject(err);
         } else {
-          var notAchievedGoals=[];
-          console.log("days:")
+          var notAchievedGoals = [];
+          console.log("days:");
           console.log(days);
           days.forEach(myFunction);
           function myFunction(item, index) {
             //var test =[];
-            if(item.goal!="" && item.achievement!="")
-            {
-              item.date=formatDate(item.date);
+            if (item.goal != "" && item.achievement != "") {
+              item.date = formatDate(item.date);
               notAchievedGoals.push(item);
               console.log("inside foreach");
               console.log(item);
@@ -215,73 +184,73 @@ class Planner {
           }
           //notAchievedGoals.forEach(myFunction);
           resolve(notAchievedGoals);
-          console.log("Not Achieved Goals:")
+          console.log("Not Achieved Goals:");
           console.log(notAchievedGoals);
         }
       });
     });
   }
   //-----------------------------------------------------------------------------------
-  setGoal(id,newGoal,userId) {
-    console.log("setGoal id: "+id);
+  setGoal(id, newGoal, userId) {
+    console.log("setGoal id: " + id);
     this.db.update(
-      { dayId:parseInt(id,10)}, 
-      { $set: { goal: newGoal} },
+      { dayId: parseInt(id, 10) },
+      { $set: { goal: newGoal } },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
       //add setAchievement(id, "") to reset achievement
-      );
-      this.db.update(
-        { dayId:parseInt(id,10)}, 
-        { $set: { user: userId} },
-        function (err, numReplaced) {
-          console.log("replaced---->" + numReplaced);
-        }
-        //add setAchievement(id, "") to reset achievement
-        );
+    );
+    this.db.update(
+      { dayId: parseInt(id, 10) },
+      { $set: { user: userId } },
+      function (err, numReplaced) {
+        console.log("replaced---->" + numReplaced);
+      }
+      //add setAchievement(id, "") to reset achievement
+    );
   }
   //-----------------------------------------------------------------------------------
   deleteGoal(id) {
-    console.log("deleteGoal id: "+id);
+    console.log("deleteGoal id: " + id);
     this.db.update(
-      { dayId:parseInt(id,10)}, 
-      { $set: { goal: ""} },
+      { dayId: parseInt(id, 10) },
+      { $set: { goal: "" } },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
       //add setAchievement(id, "") to reset achievement
-      );
+    );
   }
   //-----------------------------------------------------------------------------------
-  setAchievement(id,achievement){
+  setAchievement(id, achievement) {
     this.db.update(
-      { dayId:parseInt(id,10)}, 
-      {$set:{achievement: achievement}},
+      { dayId: parseInt(id, 10) },
+      { $set: { achievement: achievement } },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
-      );
+    );
   }
   //-----------------------------------------------------------------------------------
-  deleteAchievement(id){
+  deleteAchievement(id) {
     this.db.update(
-      { dayId:parseInt(id,10)}, 
-      {$set:{achievement: ""}},
+      { dayId: parseInt(id, 10) },
+      { $set: { achievement: "" } },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
-      );
+    );
   }
   //-----------------------------------------------------------------------------------
-  markGoal(id){
+  markGoal(id) {
     this.db.update(
-      { dayId:parseInt(id,10)}, 
-      {$set:{achievement: "Achieved"}},
+      { dayId: parseInt(id, 10) },
+      { $set: { achievement: "Achieved" } },
       function (err, numReplaced) {
         console.log("replaced---->" + numReplaced);
       }
-      );
+    );
   }
   //-----------------------------------------------------------------------------------
   formatDate(date) {
@@ -295,8 +264,38 @@ class Planner {
       );
     }
   }
-    //-----------------------------------------------------------------------------------
-}// end of class
+  //-----------------------------------------------------------------------------------
+
+  doInit(){
+    return new Promise((resolve, reject) => {
+      this.db.find({ }, function (err, days) {
+        if (err) {
+          console.log("error occured in Planner model");
+          reject(err);
+        } else {
+          var lastDayDate = new Date(Math.max.apply(null, days.map(function(e) {
+            return new Date(e.date);
+          })));
+          //console.log(lastDayDate);
+          var a;
+          var today = new Date();
+          //console.log(today);
+          //console.log(today.getUTCMonth());
+          //console.log(lastDayDate.getUTCMonth());
+          if(days !=null && today.getUTCMonth()===lastDayDate.getUTCMonth()){
+            resolve(a=false)
+          }
+          else{
+            resolve(a=true)
+          }
+        }
+      });
+    });
+
+  }
+
+  
+} // end of class
 
 function formatDate(date) {
   //console.log("this is the function formatDate")
@@ -306,10 +305,10 @@ function formatDate(date) {
     return (
       //date.getFullYear() + "/" + (date.getMonth() + 1) + "/" + date.getDate()
       moment(date).format("MMM Do YYYY")
-    )
+    );
   }
 }
 
-const dao = new Planner("planner.db");
+const dao = new Planner("../planner.db");
 //dao.init();
 module.exports = dao;
