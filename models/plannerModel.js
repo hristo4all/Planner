@@ -17,7 +17,7 @@ class Planner {
   init() {
     console.log("Planner init() called");
     //reset the database
-    //this.db.remove({}, { multi: true }, function (err, numRemoved) {});
+    this.db.remove({}, { multi: true }, function (err, numRemoved) {});
     //-----------------------------------------------------------------------
     /* Get all days and dates within a months
      * @param {int} The month number, 0 based
@@ -101,7 +101,7 @@ class Planner {
           entries.forEach(forEachFunction);
           resolve(entries);
           //to see what the returned data looks like
-          //console.log("function all() returns: ", entries);
+          console.log("function all() returns: ", entries);
         }
       });
     });
@@ -276,20 +276,23 @@ class Planner {
           var lastDayDate = new Date(Math.max.apply(null, days.map(function(e) {
             return new Date(e.date);
           })));
-          //console.log(lastDayDate);
+          console.log(lastDayDate);
           var a;
           var today = new Date();
-          //console.log(today);
-          //console.log(today.getUTCMonth());
-          //console.log(lastDayDate.getUTCMonth());
+          console.log(today);
+          console.log(today.getUTCMonth());
+          console.log(lastDayDate.getUTCMonth());
           if(days !=null && today.getUTCMonth()===lastDayDate.getUTCMonth()){
             resolve(a=false)
+            console.log(a);
           }
           else{
             resolve(a=true)
+            console.log(a);
           }
         }
       });
+      
     });
 
   }

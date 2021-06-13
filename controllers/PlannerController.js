@@ -34,9 +34,11 @@ console.log(x);
 let test = db.doInit();
 test.then(function(result) {
   if(result){
+    //db.remove({}, { multi: true }, function (err, numRemoved) {});
     db.init();
   }
   else{
+    //db.remove({}, { multi: true }, function (err, numRemoved) {});
     console.log("no need for init()");
   }
 })
